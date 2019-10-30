@@ -11,7 +11,86 @@ ul,li{
     padding:0;
     box-sizing: border-box;
 }
+p{
+    margin: 0;
+}
+i,em{
+    font-style: normal;
+}
+img {
+    vertical-align: top;
+    border: none;
+    max-width: 100%;
+}
+input,textarea,a{
+    -webkit-tap-highlight-color: transparent;
+}
+.icon{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+}
+.banner-box{
+    position: relative;
+    height: 3.6rem;
+    overflow: hidden;
+    ul{
+        box-sizing: border-box;
+    }
+}
+.fn-clear{
+    zoom: 1;
 
+}
+.fn-clear:before, .fn-clear:after {
+    content: "";
+    display: table;
+}
+.pd-list .pd-price .present-price, .pd-list .pd-price .original-price {
+    display: block;
+    width: 1.9rem;
+    text-align: center;
+    font-size: .24rem;
+}
+.swiper-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.hd-wrap .search-wrap2, .hd-wrap .search-wrap3, .hd-wrap .search-wrap4{
+    margin-top: 0.14rem;
+    float: left;
+    display: inline-block;
+    height: 0.56rem;
+    padding-left: 0.1rem;
+    line-height: 0.56rem;
+    border: 1px solid #fff;
+    border-radius: 0.06rem;
+    background-color: white;
+}
+.hd-wrap .search-wrap2 input, .hd-wrap .search-wrap3 input, .hd-wrap .search-wrap4 input{
+    color: #ccc;
+    height: 0.5rem;
+    padding: 0.1rem 0.05rem;
+    border: none;
+    width: 85%;
+    vertical-align: 2px;
+    font-size: 0.24rem;
+}
 .Home_container{
     .topheader{
         background-color:#2e2e2e ;
@@ -23,14 +102,599 @@ ul,li{
         position: fixed;
         top:0;
         left:50%;
-            margin-left: -3.75rem;
-            z-index: 99;
+        margin-left: -3.75rem;
+        z-index: 99;
             .toLogin{
                 width: 7.5rem;
                 height: 0.88rem;
                 padding: 0.1rem .25rem;
                 line-height: 0.68rem;
                 background: #3c3c3c;
+                .icon-close{
+                
+                    display: inline-block;
+                    width: .32rem;
+                    height: .32rem;
+                    background: url(https://m.qulv.com/images/register.png) no-repeat;
+                    background-size: 0.64rem 1rem;
+                    background-position: 0 0;
+                    vertical-align: middle;
+                }
+
+                .icon-logo-s{
+                    display: inline-block;
+                    width: 0.64rem;
+                    height: 0.64rem;
+                    background:url(https://m.qulv.com/images/register.png) no-repeat;
+                    background-size: 0.64rem 1rem;
+                    background-position: 0 -0.35rem;
+                    vertical-align: top;
+                    margin-top: 0.02rem;
+                    margin-left: 0.2rem;
+                    margin-right: 0.1rem;
+                }
+                span{
+                    font-size: 0.24rem;
+                    color: #fff;
+
+                }
+                .register{
+                    float: right;
+                    color: #fff;
+                    font-size: 0.3rem;
+                    text-decoration: none;
+                }
+            }
+            .header{
+                width: 7.5rem;
+                height: 45px;
+                line-height: 45px;
+                font-size: 16px;
+                color: #666;
+                z-index: 99;
+                .hd-wrap.curr{
+                    background: linear-gradient(#4c84fc, #4c84fc);
+                }
+                .hd-wrap{
+                    position: relative;
+                    padding: 0 0.2rem;
+                    width: 7.5rem;
+                    height: 0.9rem;
+                    line-height: 0.9rem;
+                    background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0));
+                    color: white;
+                    .place-wrap{
+                        position: relative;
+                        float: left;
+                        height: 0.96rem;
+                        line-height: 0.96rem;
+                        // display: inline-block;
+                        color: #fff;
+                        padding-right: 0.5rem;
+                        .city-name{
+                            display: inline-block;
+                            line-height: 0.92rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        .ic-choice-city{
+                            margin-left: 0.1rem;
+                            position: absolute;
+                            top:0.46rem;
+                            right: 0.25rem;
+                            width: 0;
+                            height: 0;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-top: 3px solid #fff;
+                            vertical-align: 1px;
+                        }
+                    }
+                    .search-wrap2{
+                        width: 5.2rem;
+                        .ic-sl-place{
+                            float: left;
+                            width: 0.28rem;
+                            height: 0.28rem;
+                            margin-top: 0.12rem;
+                            background:url(https://m.qulv.com/images/iconHd.png) no-repeat;
+                            background-size: 0.64rem 4rem;
+                            background-position: 0 -1.4rem;
+                        }
+                    }
+                    .msg-wrap{
+                        position: absolute;
+                        right: 0;
+                        top:0;
+                        height: 45px;
+                        display: inline-block;
+                        width: 1rem;
+                        text-align: center;
+                        color: #fff;
+                        text-decoration: none;
+                        .icon-msg{
+                            display: inline-block;
+                            width: 0.54rem;
+                            height: 0.54rem;
+                            vertical-align: top;
+                            margin-top: 0.15rem;
+                            background: url(https://m.qulv.com/images/iconHd.png) no-repeat;
+                            background-size: 0.64rem 4rem;
+                            background-position: 0 0;
+                        }
+                    }
+                }
             }
     }
+    .wrap{
+        width: 7.5rem;
+        margin: 0 auto;
+        background: #eee;
+        padding-bottom: 2.1rem;
+        .swiper-container{
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow:hidden;
+            z-index: 1;
+            .ant-carousel{
+                div{
+                    width: 414px;
+                    img{
+                        max-width: 7.5rem;
+
+                    }
+                }
+            }
+        }
+        .nav-wrap{
+            width: 7.5rem;
+            overflow: hidden;
+            padding-bottom: .2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #E5E5E5;
+            a{
+                display: inline-block;
+                float: left;
+                padding-top: 0.2rem;
+                width: 20%;
+                height: 1.32rem;
+                text-align: center;
+                color: #656565;
+                text-decoration: none;
+                img{
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    vertical-align: middle;
+                }
+                .nav-name{
+                    text-align: center;
+                    overflow: hidden;
+                    padding: 0 0.05rem;
+                    font-size: 0.24rem;
+                    color: #656565;
+                    line-height: 0.44rem;
+                }
+            }
+        } 
+        .tips-wrap{
+        display: block;
+        width: 7.5rem;
+        height:0.9rem;
+        line-height: 0.9rem;
+        background: #fff;
+        border-bottom: 0.5px solid #e5e5e5;
+        overflow: hidden;
+        .tips-tit{
+            float:left;
+            display: table-cell;
+            width: 2.6rem;
+            height:0.9rem;
+            text-align: center;
+            vertical-align: middle;
+            img{
+                height: 0.36rem;
+                vertical-align: middle;
+            }
+        }
+        .tips-txt{
+                float: left;
+                overflow: hidden;
+                color: #666;
+                width: 4.8rem;
+                
+            #tipsHot{
+                transition: all 0.5s;
+            }
+            a{
+                display: block;
+                height: 0.9rem;
+                line-height: 0.9rem;
+                font-size: 0.26rem;
+                color: #666;
+                text-decoration: none;
+                display: -webkit-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+            }
+        }
+        }
+        .limited-wrap{
+            width: 7.5rem;
+            .item-name{
+                display: table-cell;
+                width: 7.5rem;
+                height: 0.7rem;
+                text-align: center;
+                vertical-align: middle;
+                img{
+                    height: 0.3rem;
+                    vertical-align: middle;
+                }
+            }
+            .limited-list{
+                position: relative;
+                height: 2.8rem;
+                margin-bottom:0.3rem;
+                overflow: hidden;
+                border-top: 1px solid #eee;
+                border-bottom: 1px solid #eee;
+                background: #fff;
+                .img-wrap{
+                    position: absolute;
+                    left:1.2rem;
+                    height: 100%;
+                    ul{
+                        display: table;
+                        table-layout: fixed;
+                        white-space: nowrap;
+                        height: 100%;
+                        // width: 10rem;
+                        overflow: auto;
+                        li{
+                            
+                            float: left;
+                            position: relative;
+                            display: inline-block;
+                            -webkit-box-flex: 1;
+                            -webkit-box-align: center;
+                            -webkit-box-pack: center;
+                            vertical-align: top;
+                            width: 1.875rem;
+                            height: 2.8rem;
+                            background-color: #ffffff;
+                            a{
+                                display: block;
+                                height: 100%;
+                                padding: 0 .14rem;
+                                background-color: #ffffff;
+                                text-decoration: none;
+                                border-right: 1px solid #e5e5e5;
+                                .tips-tit{
+                                    text-align: center;
+                                    height: .65rem;
+                                    line-height: .65rem;
+                                    font-size: .24rem;
+                                    color: #323333;
+                                    overflow: hidden;
+                                }
+                                .tips-img{
+                                    width: 1.6rem;
+                                    height: 1.6rem;
+                                    line-height: 1.6rem;
+                                    text-align: center;
+                                    overflow: hidden;
+                                    background-color:#eee;
+                                    margin-bottom: 0.1rem;
+                                    img{
+                                        height: 100%;
+                                        width:auto;
+                                    }
+                                }
+                                .price-mark{
+                                    .price{
+                                        text-align:center;
+                                        color: #ef786e;
+                                        font-size: 0.26rem;
+                                        margin-top: 0.05rem;
+                                        text-decoration: none;    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .deal-list{
+                background: #fff;
+                overflow: hidden;
+                li{
+                    float: left;
+                    width: 2.49rem;
+                    padding: 0;
+                    line-height: 3rem;
+                    text-align: center;
+                    border: 1px solid #e5e5e5;
+                    a{
+                        display: inline-block;
+                        img{
+                            width: 2.49rem;
+                            height: 3rem;
+                        }
+                    }
+                }
+            }
+        }
+        .wonderful-wrap{
+            width: 7.5rem;
+            .item-name{
+                display: table-cell;
+                width: 7.5rem;
+                height: 0.7rem;
+                text-align: center;
+                vertical-align: middle;
+                img{
+                    height: 0.3rem;
+                    vertical-align: middle;
+                }
+            }
+            .wonderful-list{
+                clear: both;
+                background: #fff;
+                .bb{
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                .br{
+                    border-right: 1px solid #e5e5e5;
+                }
+                li{
+                    display: inline-block;
+                    // float: left;
+                    width: 25%;
+                    height: 1.06rem;
+                    padding-top: 0.15rem;
+                    text-align: center;
+                    a{
+                        text-decoration: none;
+
+                    }
+                    img{
+                        height: 0.4rem;
+                        width: 0.72rem;
+                    }
+                    p{
+                        font-size: 0.24rem;
+                        color: #3e3e3e;
+                        line-height: 0.4rem;
+                        margin-top:0.05rem ;
+                        text-decoration: none;
+                    }
+
+                }
+            }
+            .guide-list{
+                width: 100%;
+                margin-top:0.15rem ;
+                background: #fff;
+                li{ 
+
+                    width: 50%;
+                    height: 1.44rem;
+                    display: inline-block;
+                     a{
+                    display: block;
+                    text-align: center;
+
+                }
+                }
+               li:first-child{
+                   border-right: 1px solid #e5e5e5;
+               }
+            }
+        }
+        .recommended-wrap{
+            width: 7.5rem;
+            .item-name{
+                display: table-cell;
+                width: 7.5rem;
+                height:0.7rem;
+                text-align: center;
+                vertical-align: middle;
+                img{
+                    height: 0.3rem;
+                    vertical-align: middle;
+                }
+            }
+            .pd-list-box{
+                padding: 0 0.1rem;
+                .pd-list{
+                    li{
+                        position: relative;
+                        display: inline-block;
+                        -webkit-box-flex: 1;
+                        -webkit-box-align: center;
+                        -webkit-box-pack: center;
+                        vertical-align: top;
+                        width: 100%;
+                        margin-right:.1rem;
+                        margin-bottom: .2rem;
+                        background: #fff;
+                       a{
+                        text-decoration: none;
+                        }
+                        .img-box{
+                    position: relative;
+                    width: 7.3rem;
+                    height: 3rem;
+                    text-align: center;
+                    vertical-align: middle;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: auto;
+                        vertical-align: middle;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translate(0,-50%);
+                    }
+                    .pd-price{
+                        position: absolute;
+                        right: 0;
+                        bottom: 0.3rem;
+                        width: 1.9rem;
+                        z-index: 11;
+                        height: 1rem;
+                        .present-price{
+                            height: 0.6rem;
+                            line-height: 0.6rem;
+                            color: #fff;
+                            background: #ff5940;
+                            border-bottom-left-radius: 0.3rem;
+                            border-top-left-radius: 0.3rem;
+                            em{
+                                vertical-align: top;
+                            }
+                            b{
+                                font-size: 0.36rem;
+                                font-weight: normal;
+                                line-height: 1;
+                                vertical-align: top;
+                                display: inline-block;
+                                margin-top: 0.1rem;
+                            }
+                        }
+                    }
+                        } 
+                        .txt-box{
+                            padding: 0.15rem;
+                            .pd-title{
+                                font-size: 0.26rem;
+                                line-height: 0.34rem;
+                                color: #656565;
+                                margin-bottom: 0.05rem;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                text-decoration: none;
+                            }
+                            .label-list{
+                                margin: 0.1rem 0 0.1rem;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+   .pop-modal{
+       display: none;
+       .gallery{
+           position: fixed;
+           left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 1010;
+        }
+        .pop-modal-bd{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 7.5rem;
+            height: 5.6rem;
+            padding: 0 0.2rem;
+            z-index: 1011;
+            .pop-modal-ul{
+                border-radius: 0.2rem;
+                margin-bottom:0.2rem;
+                background:#f2f2f2;
+                li{
+                    position: relative;
+                    padding: 0 0.25rem;
+                    height: 1.14rem;
+                    line-height: 1.14rem;
+                    border-top: 1px solid #555;
+                    background: #f2f2f2;
+                    .icon-qulv{
+                        position: absolute;
+                        left:0.25rem;
+                        top:0.4rem;
+                        display: inline-block;
+                        width: 1.14rem;
+                        height: 1.14rem;
+                        background: url(https://m.qulv.com/images/iconConsult.png) no-repeat;
+                        background-size: 1.2rem 2.4rem;
+                        background-position: 0 0;
+                    }
+                    a{
+                        display: block;
+                        text-decoration: none;
+                    }
+                    span{
+                        font-size: 0.36rem;
+                        color: #379bed;    
+                    }
+                    .icon-tel{
+                        position: absolute;
+                        right: 0.25rem;
+                        top:0.32rem;
+                        display: inline-block;
+                        width: 0.5rem;
+                        height: 0.5rem;
+                        background: url(https://m.qulv.com/images/iconConsult.png) no-repeat;
+                        background-size: 1.2rem 2.4rem;
+                        background-position: 0 -1.2rem;
+                    }
+                    .icon-consult{
+                        position: absolute;
+                        right: 0.25rem;
+                        top:0.32rem;
+                        display: inline-block;
+                        width: 0.5rem;
+                        height: 0.5rem;
+                        background: url(https://m.qulv.com/images/iconConsult.png) no-repeat;
+                        background-size: 1.2rem 2.4rem;
+                        background-position: 0 -1.8rem;
+                    }
+                }
+                li:first-child{
+                    height: 1.9rem;
+                    line-height: 1;
+                    padding-left:1.6rem;
+                    padding-top:0.4rem;
+                    border-top-left-radius: 0.2rem;
+                    border-top-right-radius: 0.2rem;
+                    background: #f2f2f2;
+                    .txt1{
+                        font-size: 0.36rem;
+                        color: #333;
+                        line-height: 0.72rem;
+                    }
+                    .txt2{
+                        font-size: 0.24rem;
+                        color: #8f8f8f;
+                        line-height: 0.32rem;
+                    }
+                }
+            }
+            .cancel-btn{
+                width: 100%;
+                height: 1.12rem;
+                line-height: 1.12rem;
+                text-align: center;
+                border-radius: 0.2rem;
+                font-size: 0.4rem;
+                color: #007aff;
+                border:none;
+                background: #fff;
+            }
+        }
+   }
 }
