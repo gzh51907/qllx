@@ -45,32 +45,32 @@ class App extends React.Component {
 
     return (
       <div>
-        <div classNmae="footer" style="display: block;">
-          <div classNmae="center-wrap JS_ftTab">
-            <a href="/" classNmae="ft-btn-out curr">
-              <div classNmae="ft-btn-inner">
-                <Icon type="home" classNmae="icon-ft b1"></Icon>
+        <div className="footer" style={{display:'block'}}>
+          <div className="center-wrap JS_ftTab">
+            <a href="/" className="ft-btn-out curr">
+              <div className="ft-btn-inner">
+                <Icon type="home" className="icon-ft b1"></Icon>
               </div>
             </a>
-            <a href="/lineInfor/" classNmae="ft-btn-out">
-              <div classNmae="ft-btn-inner">
-                <Icon type="global" classNmae="icon-ft b2"></Icon>
+            <a href="/lineInfor/" className="ft-btn-out">
+              <div className="ft-btn-inner">
+                <Icon type="global" className="icon-ft b2"></Icon>
               </div>
             </a>
-            <a href="/consult/" classNmae="ft-btn-out">
-              <div classNmae="ft-btn-inner">
-                <Icon type="message" classNmae="icon-ft b4"></Icon>
+            <a href="/consult/" className="ft-btn-out">
+              <div className="ft-btn-inner">
+                <Icon type="message" className="icon-ft b4"></Icon>
               </div>
             </a>
-            <a href="/discover/" classNmae="ft-btn-out">
-              <div classNmae="ft-btn-inner">
-                <Icon type="eye" classNmae="icon-ft b3"></Icon>
+            <a href="/discover/" className="ft-btn-out">
+              <div className="ft-btn-inner">
+                <Icon type="eye" className="icon-ft b3"></Icon>
               </div>
             </a>
 
-            <a href="/mine/" classNmae="ft-btn-out">
-              <div classNmae="ft-btn-inner">
-                <Icon type="user" classNmae="icon-ft b5"></Icon>
+            <a href="/mine/" className="ft-btn-out">
+              <div className="ft-btn-inner">
+                <Icon type="user" className="icon-ft b5"></Icon>
               </div>
             </a>
           </div>
