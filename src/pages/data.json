@@ -1,0 +1,51 @@
+{
+    "Success": true,
+    "Message": "",
+    "Data": {
+        "ID": "a0c2ee0e-b3ff-4794-89a0-4b4bf7de72f7",
+        "VideoLink": "http://cloud.video.taobao.com/play/u/665026784/p/1/e/6/t/1/41612941.mp4",
+        "Name": "安利巴厘岛旅游.",
+        "Desc": "精心安排全程入住当地五星级酒店，近距离感受海洋气息，让您真正享受浪漫假期。",
+        "CommentTotal": 0,
+        "PicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-07/20160722113014184_49.jpg",
+        "PCPicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-07/20160723121232458_49.jpg",
+        "EnName": "bali",
+        "CnName": "巴厘岛",
+        "OldIslandID": "3",
+        "OldIslandCityID": null,
+        "ViewCount": 773,
+        "UserIsClickALikeed": false,
+        "UserIsClickBaded": false,
+        "CommentList": [],
+        "VideoConfigDetail": [
+            {
+                "ID": "53fa56f3-5548-4b88-85ac-e005c1636f2b",
+                "Name": "日本冲绳旅游",
+                "PicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-07/20160723151604985_101.jpg",
+                "ProductLink": "http://cloud.video.taobao.com/play/u/665026784/p/1/e/6/t/1/41594258.mp4",
+                "VideoPlayTime": "3:35"
+            },
+            {
+                "ID": "d46b23af-b22d-4a18-8509-dac080bf7481",
+                "Name": "马来西亚 _璀璨沙巴",
+                "PicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-07/20160723142337103_53.jpg",
+                "ProductLink": "http://cloud.video.taobao.com/play/u/665026784/p/1/e/6/t/1/41642994.mp4",
+                "VideoPlayTime": "4:45"
+            },
+            {
+                "ID": "5d6140d8-467c-4bcb-9232-1e26ada21e9e",
+                "Name": "跟着小画去旅行之斯里兰卡",
+                "PicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-04/20160404125904589_21.jpeg",
+                "ProductLink": "http://cloud.video.taobao.com/play/u/665026784/p/1/e/6/t/1/41437479.mp4",
+                "VideoPlayTime": "0:54"
+            },
+            {
+                "ID": "b62ad4dc-9b96-479b-868b-3df2868b809c",
+                "Name": "夏威夷Kauai岛旅游短片",
+                "PicLink": "http://pic.qtour.com/Upload/QulvCom/Video/2016-07/20160722120459398_30.jpg",
+                "ProductLink": "http://cloud.video.taobao.com/play/u/665026784/p/1/e/6/t/1/41645938.mp4",
+                "VideoPlayTime": "4:47"
+            }
+        ]
+    }
+}
