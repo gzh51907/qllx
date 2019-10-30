@@ -11,35 +11,7 @@ import Home from './pages/Home/Home.jsx';
 class App extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   selected: ['/home'],
-    //   menu: [{
-    //     name: 'home',
-    //     path: '/home',
-    //     text: '首页',
-    //     icon: 'home'
-    //   }, {
-    //     name: 'destination',
-    //     path: '/destination',
-    //     text: '目的地',
-    //     icon: 'global'
-    //   }, {
-    //     name: 'message',
-    //     path: '/message',
-    //     text: '咨询',
-    //     icon: 'message'
-    //   }, {
-    //     name: 'discover',
-    //     path: '/discover',
-    //     text: '发现',
-    //     icon: 'eye'
-    //   }, {
-    //     name: 'mine',
-    //     path: '/mine',
-    //     text: '我的',
-    //     icon: 'home'
-    //   }]
-    // }
+   
   }
   render() {
 
