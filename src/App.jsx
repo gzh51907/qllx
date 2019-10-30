@@ -3,11 +3,12 @@ import { tsConstructorType, appendToMemberExpression } from '@babel/types';
 import { Menu, Icon } from 'antd';
 import { Route, Switch,Redirect} from 'react-router-dom'
 import Home from './pages/Home/Home.jsx';
-import './App.css'
-// import Destination from './pages/destination'
-// import Message from './pages/message'
-// import Discover from './pages/discover'
-// import Mine from './pages/mine'
+import Trip from './pages/Trip/Trip.jsx';   //旅游详情页
+import './App.css';
+import Destination from './pages/destination'
+import Message from './pages/message'
+import Discover from './pages/discover'
+import Mine from './pages/mine'
 
 class App extends React.Component {
   constructor() {
@@ -54,10 +55,11 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route path="/home" component={Home} />
-          {/* <Route path="/discover" component={Discover} />
+          <Route path="/discover" component={Discover} />
           <Route path="/mine" component={Mine} />
           <Route path="/destination" component={Destination} />
-          <Route path="/message" component={Message} /> */}
+          <Route path="/message" component={Message} />
+            <Route path='/trip/:id' component={Trip}></Route>
           <Redirect from='/' to="home" exact />
           <Route render={() => <div><h1>404</h1>页面不存在</div>} />
         </Switch>
