@@ -71,6 +71,10 @@ module.exports = {
             {
                 test:/\.scss$/,
                 use:['style-loader','css-loader','sass-loader']
+            },
+            {
+                test:/\.(jpg|png|jpeg|gif)$/,
+                use:['url-loader']
             }
         ]
     },
