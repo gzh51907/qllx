@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import Api from ''
 import './Videodetail.scss'
 @withRouter
 class Videodetail extends Component{

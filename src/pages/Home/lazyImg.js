@@ -1,15 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2019-10-30 19:33:01
- * @LastEditTime: 2019-10-30 19:39:13
+ * @LastEditTime: 2019-10-31 09:04:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \qllx\src\pages\Home\lazyImg.js
  */
  //滚动加图片
 import $ from 'jquery';
- var ImgLazy = function () {
-    
+(function(ImgLazy){
     var $winH = $(window).height(); //获取窗口高度
     var $img = $("img[lazy='y']");  //获取页面上要延时加载的图片集合
     var $imgH = parseInt($img.height() / 4); //图片到四分之一的时候显示
@@ -34,5 +33,9 @@ import $ from 'jquery';
     $(window).scroll(function () {
         runing(); //滚动刷新
     })
-};
-export default ImgLazy;
+})($)
+//  var ImgLazy = function () {
+    
+    
+// };
+export default $;

@@ -779,3 +779,16 @@ input, textarea, a {
   border: none;
   background: #fff;
 }
+
+.Home_container .visibile {
+  display: none;
+  position: fixed;
+  right: 0.3rem;
+  bottom: 2.1rem;
+  z-index: 999;
+}
+
+.Home_container .visibile img {
+  width: 0.7rem;
+  height: 0.7rem;
+}

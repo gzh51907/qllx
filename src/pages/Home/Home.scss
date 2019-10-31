@@ -697,4 +697,15 @@ input,textarea,a{
             }
         }
    }
+   .visibile{
+       display: none;
+       position: fixed;
+       right: 0.3rem;
+       bottom: 2.1rem;
+       z-index: 999;
+       img{
+           width:0.7rem;
+           height: 0.7rem;
+       }
+   }
 }

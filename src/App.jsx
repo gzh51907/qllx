@@ -5,6 +5,7 @@ import Home from './pages/Home/Home.jsx';
 import './App.css'
 import Destination from './pages/Destination/Destination.jsx'
 import Message from './pages/Message/Message.jsx'
+import Trip from './pages/Trip/Trip.jsx'
 import Discover from './pages/Discover/Discover.jsx'
 import Mine from './pages/Mine/Mine.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
@@ -75,6 +76,7 @@ class App extends React.Component {
                     <Route path="/mine" component={Mine} />
                     <Route path="/destination" component={Destination} />
                     <Route path="/message" component={Message} />
+                    <Route path='/trip' component={Trip}></Route>
                     <Route path='/discover/videodetail' component={Videodetail}/>
                     <Redirect from='/' to="home" exact />
                     <Route render={() => <div><h1>404</h1>页面不存在</div>} />

@@ -258,15 +258,25 @@ class Home extends Component {
         let H = toLogin.offsetHeight;
         let topHeader = document.getElementsByClassName('topheader')[0];
         let hdWrap = document.getElementsByClassName('hd-wrap')[0];
+        let slideTop = document.getElementById('slide_top')
         window.onscroll = function () {
             if (window.scrollY >= H) {
                 toLogin.style.display = 'none';
                 topHeader.style.display = 'none';
-                hdWrap.classList.add('curr')
-            } else {
+                hdWrap.classList.add('curr');
+            }
+            else {
+                
                 toLogin.style.display = 'block'
                 topHeader.style.display = 'block';
-                hdWrap.classList.remove('curr')
+                hdWrap.classList.remove('curr');
+            }
+
+
+            if (window.scrollY > 800) {
+                slideTop.style.display = 'block';
+            }else{
+                slideTop.style.display = 'none';
             }
         }
     }
@@ -283,6 +293,10 @@ class Home extends Component {
             tipsHot.style.marginTop = -num * 0.9 + 'rem';
 
         }, 1500)
+
+    }
+    Totop = () => {
+        let timer = setInterval(() => document.documentElement.scrollTop <= 0 ? clearInterval(timer) : window.scrollTo(0, document.documentElement.scrollTop - 100), 17)
 
     }
     // scoller = (e)=>{
@@ -307,16 +321,16 @@ class Home extends Component {
     //     console.log(e.clientX)
     // }
     // 下弹窗的显示隐藏
-    pop_show = () =>{
+    pop_show = () => {
         let popModal = document.getElementsByClassName('pop-modal')[0];
         popModal.style.display = 'block';
     }
-    cancel_pop = ()=>{
+    cancel_pop = () => {
         let popModal = document.getElementsByClassName('pop-modal')[0];
         popModal.style.display = 'none';
     }
     //顶部的显示隐藏
-    closeTop = () => {   
+    closeTop = () => {
         let toLogin = document.getElementsByClassName('toLogin')[0];
         let topHeader = document.getElementsByClassName('topheader')[0];
         let hdWrap = document.getElementsByClassName('hd-wrap')[0];
@@ -499,17 +513,17 @@ class Home extends Component {
                                                 <div className='img-box' data-id={item.id}>
                                                     <img lazy='y' src={item.imgUrl}></img>
                                                     <p className='pd-price fn-clear'>
-                                                        {item.price == '￥起'?
-                                                        <span className='present-price'>
-                                                                    <em>￥</em>
-                                                                        <b></b>
-                                                                        <em>起</em>
-                                                        </span>:
-                                                        <span className='present-price'>
-                                                            <b>{item.price}</b>
-                                                        </span>
-                                                    }
-                                                        
+                                                        {item.price == '￥起' ?
+                                                            <span className='present-price'>
+                                                                <em>￥</em>
+                                                                <b></b>
+                                                                <em>起</em>
+                                                            </span> :
+                                                            <span className='present-price'>
+                                                                <b>{item.price}</b>
+                                                            </span>
+                                                        }
+
                                                     </p>
                                                 </div>
                                                 <div className='txt-box'>
@@ -533,13 +547,13 @@ class Home extends Component {
                         <ul className='pop-modal-ul'>
                             <li>
                                 <i className='icon-qulv'></i>
-                            <p className='txt1'>资讯客服</p>
-                            <p className='txt2'>了解更多产品信息，请咨询趣旅客服</p>
+                                <p className='txt1'>资讯客服</p>
+                                <p className='txt2'>了解更多产品信息，请咨询趣旅客服</p>
                             </li>
                             <li>
                                 <a href='tel:4006861799' id='telConsult'>
                                     <span>电话资讯</span>
-                                    <i class='icon-tel'></i>
+                                    <i className='icon-tel'></i>
                                 </a>
                             </li>
                             <li>
@@ -551,6 +565,11 @@ class Home extends Component {
                         </ul>
                         <button className='cancel-btn' onClick={this.cancel_pop}>取消</button>
                     </div>
+                </div>
+                <div onClick={this.Totop} className='visibile' draggable={true} id='slide_top'>
+                    <span>
+                        <img src='https://m.qulv.com/Files/images/scrolltotop.png' alt='回到顶部'></img>
+                    </span>
                 </div>
             </div>
         )
