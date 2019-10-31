@@ -178,7 +178,7 @@ class Line extends Component {
         let {tabdata,listdata} = this.state;
         console.log(2)
         return (
-            <div>
+            <div id='line'>
           
                  <div>
                         <BackTop 

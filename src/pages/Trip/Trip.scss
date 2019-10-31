@@ -1,102 +1,103 @@
-.icon-priceTip2 {
-    background-position: -.34rem 0;
-    width: .24rem;
-    height: .24rem;
-    
-}
-.fn-clear::after{
-    content:'';
-     display:block;
-      clear:both; 
-      height:0; 
-      overflow:hidden; 
-      visibility:hidden; 
-    }
-    
-h2{
-    margin: 0;
-}
 
-
-.icon{
-    display: inline-block;
-    background-image: url(//static.qtour.com/images/201811/groupDetail-icon.c5aa554.png);
-    background-size: 2.42rem 18.61rem;
-}
-.icon-arrowR{
-    background-position: 0 -1.32rem;
-    width: .12rem;
-    height: .24rem;
-}
-.icon-arrowL{
-    background-position: 0 -8.32rem;
-    width: .2rem;
-    height: .36rem;
-}
-.icon-house{
-    width: 0.36rem;
-    background-position: -.99rem -.88rem;
-}
-.icon-recrea{
-    width: 0.36rem;
-    background-position: -.99rem 0;
-}
-.icon-dining{
-    width: 0.36rem;
-    background-position: -.99rem -.44rem;
-}
-.icon-food{
-    background-position: 0 -6.27rem;
-    width: .36rem;
-}
-.icon-hotel{
-    background-position: 0 -6.68rem;
-    width: .36rem;
-}
-.flex-row, .flex-cloum{
-    display: flex;
-}
-.flex-item{
-    flex: 1;
-}
-.fn-left, .fn-right{
-    display: inline-block;
-}
-.fn-left{
-    float: left;
-}
-.fn-right{
-    float: right;
-}
-.fadeIn{
-    text-align: center;
-    background-color: #fff;
-    line-height: .62rem;
-    padding: .2rem;
-    span{
-        color: #379bed;
-        font-size: .28rem;
-        margin-right: .18rem;
-
-    }
-    i{
-        transition: all .4s ease-in-out;
-        transform: rotate(180deg);
-    }
-
-}
-.fadeIn.active i{
-    transform: rotate(0deg) !important;
-}
-.icon-arrowT{
-    background-position: 0 0;
-    width: .24rem;
-    height: .12rem;
-}
-#defaultCity{
-    vertical-align: top;
-}
 .Trip_container{
+    .icon-priceTip2 {
+        background-position: -.34rem 0;
+        width: .24rem;
+        height: .24rem;
+        
+    }
+    .fn-clear::after{
+        content:'';
+         display:block;
+          clear:both; 
+          height:0; 
+          overflow:hidden; 
+          visibility:hidden; 
+        }
+        
+    h2{
+        margin: 0;
+    }
+    
+    
+    .icon{
+        display: inline-block;
+        background-image: url(//static.qtour.com/images/201811/groupDetail-icon.c5aa554.png);
+        background-size: 2.42rem 18.61rem;
+    }
+    .icon-arrowR{
+        background-position: 0 -1.32rem;
+        width: .12rem;
+        height: .24rem;
+    }
+    .icon-arrowL{
+        background-position: 0 -8.32rem;
+        width: .2rem;
+        height: .36rem;
+    }
+    .icon-house{
+        width: 0.36rem;
+        background-position: -.99rem -.88rem;
+    }
+    .icon-recrea{
+        width: 0.36rem;
+        background-position: -.99rem 0;
+    }
+    .icon-dining{
+        width: 0.36rem;
+        background-position: -.99rem -.44rem;
+    }
+    .icon-food{
+        background-position: 0 -6.27rem;
+        width: .36rem;
+    }
+    .icon-hotel{
+        background-position: 0 -6.68rem;
+        width: .36rem;
+    }
+    .flex-row, .flex-cloum{
+        display: flex;
+    }
+    .flex-item{
+        flex: 1;
+    }
+    .fn-left, .fn-right{
+        display: inline-block;
+    }
+    .fn-left{
+        float: left;
+    }
+    .fn-right{
+        float: right;
+    }
+    .fadeIn{
+        text-align: center;
+        background-color: #fff;
+        line-height: .62rem;
+        padding: .2rem;
+        span{
+            color: #379bed;
+            font-size: .28rem;
+            margin-right: .18rem;
+    
+        }
+        i{
+            transition: all .4s ease-in-out;
+            transform: rotate(180deg);
+        }
+    
+    }
+    .fadeIn.active i{
+        transform: rotate(0deg) !important;
+    }
+    .icon-arrowT{
+        background-position: 0 0;
+        width: .24rem;
+        height: .12rem;
+    }
+    #defaultCity{
+        vertical-align: top;
+    }
     padding-bottom: 2rem;
     overflow: auto;
     height: 100%;

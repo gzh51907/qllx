@@ -28,7 +28,8 @@ class Discover extends Component {
     render() {
         let { history } = this.props
         let { banner, tuijian, remendata } = this.state
-        return (<div>
+        return (
+        <div id='discover'>
             <header>
                 <a className="h-left">
                     <b className="c-ico h-ico-back"></b>

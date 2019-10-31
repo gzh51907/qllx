@@ -25,7 +25,7 @@ class Videodetail extends Component {
 		let { history } = this.props
 		let { data, tuijiandata } = this.state
 		return (
-			<div>
+			<div id='videodetail'>
 				<header className="video-detail" style={{ background: 'none' }}>
 					<a onClick={() => {
 						history.go(-1)

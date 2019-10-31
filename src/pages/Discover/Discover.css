@@ -1,13 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-ul, li {
+#discover ul, #discover li {
   list-style: none;
 }
 
-header {
+#discover header {
   max-width: 750px;
   position: fixed;
   width: 100%;
@@ -17,23 +12,23 @@ header {
   z-index: 9;
 }
 
-header .h-left {
+#discover header .h-left {
   position: absolute;
   top: 0px;
   left: .25rem;
 }
 
-header .h-right {
+#discover header .h-right {
   position: absolute;
   top: 0px;
   right: .25rem;
 }
 
-header .c-ico {
+#discover header .c-ico {
   margin-left: .16rem;
 }
 
-header .h-title {
+#discover header .h-title {
   padding: 0px .25rem;
   text-align: center;
   font-size: .36rem;
@@ -41,49 +36,49 @@ header .h-title {
   width: 100%;
 }
 
-.swiper-slide {
+#discover .swiper-slide {
   flex-shrink: 0;
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.c-ico.ico-more {
+#discover .c-ico.ico-more {
   background: url(../../asset/discoverImg/icon-more.png?__sprite) no-repeat;
   width: .32rem;
   height: .08rem;
   background-size: .32rem .08rem;
 }
 
-.c-ico {
+#discover .c-ico {
   display: inline-block;
   vertical-align: middle;
 }
 
-.h-ico-back {
+#discover .h-ico-back {
   background: url(../../asset/discoverImg/left-arrow.png) no-repeat;
   width: .21rem;
   height: .36rem;
   background-size: .21rem .36rem;
 }
 
-.video-index-container {
+#discover .video-index-container {
   padding-top: .9rem;
   background: #fff;
 }
 
-.swiper-slide {
+#discover .swiper-slide {
   display: block;
   height: 4.2rem;
 }
 
-img {
+#discover img {
   vertical-align: top;
   border: none;
   max-width: 100%;
 }
 
-.swiper-slide p {
+#discover .swiper-slide p {
   position: absolute;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
@@ -94,21 +89,21 @@ img {
   color: #fff;
 }
 
-.swiper-slide p span {
+#discover .swiper-slide p span {
   padding-left: .4rem;
   font-size: .3rem;
 }
 
-.ant-carousel .slick-dots {
+#discover .ant-carousel .slick-dots {
   width: auto;
   right: .2rem;
 }
 
-.v-column {
+#discover .v-column {
   background: #eeeeee;
 }
 
-.v-column .c-title {
+#discover .v-column .c-title {
   width: 2rem;
   text-align: center;
   position: relative;
@@ -119,7 +114,7 @@ img {
   margin: 0 auto;
 }
 
-.v-column .c-title:before, .v-column .c-title:after {
+#discover .v-column .c-title:before, #discover .v-column .c-title:after {
   content: "";
   display: block;
   position: absolute;
@@ -130,7 +125,7 @@ img {
   background: #f54e00;
 }
 
-.v-column .c-title:before, .v-column .c-title:after {
+#discover .v-column .c-title:before, #discover .v-column .c-title:after {
   content: "";
   display: block;
   position: absolute;
@@ -141,21 +136,21 @@ img {
   background: #f54e00;
 }
 
-.v-column .c-title:after {
+#discover .v-column .c-title:after {
   left: auto;
   right: -.8rem;
 }
 
-.hot-recommed ul li:nth-child(2n) {
+#discover .hot-recommed ul li:nth-child(2n) {
   margin-right: 0px;
 }
 
-.hot-recommed ul {
+#discover .hot-recommed ul {
   background: #fff;
   padding: .2rem .24rem 0px .24rem;
 }
 
-.hot-recommed ul li {
+#discover .hot-recommed ul li {
   float: left;
   margin-right: .22rem;
   width: 3.4rem;
@@ -163,7 +158,7 @@ img {
   margin-bottom: .15rem;
 }
 
-.hot-recommed ul li a {
+#discover .hot-recommed ul li a {
   display: block;
   width: 100%;
   border-radius: 5px;
@@ -173,7 +168,7 @@ img {
   margin-bottom: .1rem;
 }
 
-.hot-recommed ul li a span {
+#discover .hot-recommed ul li a span {
   position: absolute;
   display: block;
   bottom: 0rem;
@@ -188,24 +183,24 @@ img {
   border-top-left-radius: 4px;
 }
 
-.hot-recommed ul li a img {
+#discover .hot-recommed ul li a img {
   width: 100%;
   height: 100%;
 }
 
-.hot-recommed ul li p {
+#discover .hot-recommed ul li p {
   padding-left: .1rem;
   font-size: .28rem;
   color: #676767;
   line-height: 1.2;
 }
 
-.wonderful-recommed ul li {
+#discover .wonderful-recommed ul li {
   position: relative;
   margin-bottom: .2rem;
 }
 
-.wonderful-recommed ul li p {
+#discover .wonderful-recommed ul li p {
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -218,12 +213,12 @@ img {
   padding: 0px .2rem;
 }
 
-.wonderful-recommed ul li i {
+#discover .wonderful-recommed ul li i {
   position: absolute;
   top: 0px;
   right: .24rem;
 }
 
-.ant-carousel .slick-slide img {
+#discover .ant-carousel .slick-slide img {
   display: inline-block;
 }

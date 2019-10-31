@@ -1,10 +1,18 @@
-.icon-priceTip2 {
+.Trip_container {
+  padding-bottom: 2rem;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  background: #f7f7f7;
+}
+
+.Trip_container .icon-priceTip2 {
   background-position: -.34rem 0;
   width: .24rem;
   height: .24rem;
 }
 
-.fn-clear::after {
+.Trip_container .fn-clear::after {
   content: '';
   display: block;
   clear: both;
@@ -13,111 +21,103 @@
   visibility: hidden;
 }
 
-h2 {
+.Trip_container h2 {
   margin: 0;
 }
 
-.icon {
+.Trip_container .icon {
   display: inline-block;
   background-image: url(//static.qtour.com/images/201811/groupDetail-icon.c5aa554.png);
   background-size: 2.42rem 18.61rem;
 }
 
-.icon-arrowR {
+.Trip_container .icon-arrowR {
   background-position: 0 -1.32rem;
   width: .12rem;
   height: .24rem;
 }
 
-.icon-arrowL {
+.Trip_container .icon-arrowL {
   background-position: 0 -8.32rem;
   width: .2rem;
   height: .36rem;
 }
 
-.icon-house {
+.Trip_container .icon-house {
   width: 0.36rem;
   background-position: -.99rem -.88rem;
 }
 
-.icon-recrea {
+.Trip_container .icon-recrea {
   width: 0.36rem;
   background-position: -.99rem 0;
 }
 
-.icon-dining {
+.Trip_container .icon-dining {
   width: 0.36rem;
   background-position: -.99rem -.44rem;
 }
 
-.icon-food {
+.Trip_container .icon-food {
   background-position: 0 -6.27rem;
   width: .36rem;
 }
 
-.icon-hotel {
+.Trip_container .icon-hotel {
   background-position: 0 -6.68rem;
   width: .36rem;
 }
 
-.flex-row, .flex-cloum {
+.Trip_container .flex-row, .Trip_container .flex-cloum {
   display: flex;
 }
 
-.flex-item {
+.Trip_container .flex-item {
   flex: 1;
 }
 
-.fn-left, .fn-right {
+.Trip_container .fn-left, .Trip_container .fn-right {
   display: inline-block;
 }
 
-.fn-left {
+.Trip_container .fn-left {
   float: left;
 }
 
-.fn-right {
+.Trip_container .fn-right {
   float: right;
 }
 
-.fadeIn {
+.Trip_container .fadeIn {
   text-align: center;
   background-color: #fff;
   line-height: .62rem;
   padding: .2rem;
 }
 
-.fadeIn span {
+.Trip_container .fadeIn span {
   color: #379bed;
   font-size: .28rem;
   margin-right: .18rem;
 }
 
-.fadeIn i {
+.Trip_container .fadeIn i {
   transition: all .4s ease-in-out;
   transform: rotate(180deg);
 }
 
-.fadeIn.active i {
+.Trip_container .fadeIn.active i {
   transform: rotate(0deg) !important;
 }
 
-.icon-arrowT {
+.Trip_container .icon-arrowT {
   background-position: 0 0;
   width: .24rem;
   height: .12rem;
 }
 
-#defaultCity {
+.Trip_container #defaultCity {
   vertical-align: top;
-}
-
-.Trip_container {
-  padding-bottom: 2rem;
-  overflow: auto;
-  height: 100%;
-  width: 100%;
-  background: #f7f7f7;
 }
 
 .Trip_container .top-header.active {

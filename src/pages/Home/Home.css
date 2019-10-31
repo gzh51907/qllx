@@ -3,67 +3,67 @@ html, body {
   width: 100%;
 }
 
-ul, li {
+.Home_container ul, .Home_container li {
   list-style: none;
 }
 
-* {
+.Home_container * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-p {
+.Home_container p {
   margin: 0;
 }
 
-i, em {
+.Home_container i, .Home_container em {
   font-style: normal;
 }
 
-img {
+.Home_container img {
   vertical-align: top;
   border: none;
   max-width: 100%;
 }
 
-input, textarea, a {
+.Home_container input, .Home_container textarea, .Home_container a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.icon {
+.Home_container .icon {
   display: inline-block;
   vertical-align: middle;
   font-size: 0;
 }
 
-.banner-box {
+.Home_container .banner-box {
   position: relative;
   height: 3.6rem;
   overflow: hidden;
 }
 
-.banner-box ul {
+.Home_container .banner-box ul {
   box-sizing: border-box;
 }
 
-.fn-clear {
+.Home_container .fn-clear {
   zoom: 1;
 }
 
-.fn-clear:before, .fn-clear:after {
+.Home_container .fn-clear:before, .Home_container .fn-clear:after {
   content: "";
   display: table;
 }
 
-.pd-list .pd-price .present-price, .pd-list .pd-price .original-price {
+.Home_container .pd-list .pd-price .present-price, .Home_container .pd-list .pd-price .original-price {
   display: block;
   width: 1.9rem;
   text-align: center;
   font-size: .24rem;
 }
 
-.swiper-wrapper {
+.Home_container .swiper-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -83,7 +83,7 @@ input, textarea, a {
   box-sizing: content-box;
 }
 
-.hd-wrap .search-wrap2, .hd-wrap .search-wrap3, .hd-wrap .search-wrap4 {
+.Home_container .hd-wrap .search-wrap2, .Home_container .hd-wrap .search-wrap3, .Home_container .hd-wrap .search-wrap4 {
   margin-top: 0.14rem;
   float: left;
   display: inline-block;
@@ -95,7 +95,7 @@ input, textarea, a {
   background-color: white;
 }
 
-.hd-wrap .search-wrap2 input, .hd-wrap .search-wrap3 input, .hd-wrap .search-wrap4 input {
+.Home_container .hd-wrap .search-wrap2 input, .Home_container .hd-wrap .search-wrap3 input, .Home_container .hd-wrap .search-wrap4 input {
   color: #ccc;
   height: 0.5rem;
   padding: 0.1rem 0.05rem;
