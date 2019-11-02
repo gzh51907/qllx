@@ -320,6 +320,10 @@ class Home extends Component {
     // scollerMove = (e)=>{
     //     console.log(e.clientX)
     // }
+    toTrip = (id)=>{
+        let {history} = this.props;
+        history.push('/trip/'+ id)
+    }
     // 下弹窗的显示隐藏
     pop_show = () => {
         let popModal = document.getElementsByClassName('pop-modal')[0];
@@ -411,15 +415,13 @@ class Home extends Component {
                         <div className='item-name'>
                             <img src='https://upload.qtour.com/MContent/mindex/images/title/title01.png'></img>
                         </div>
-                        <div className='limited-list' id='wrapper' style={{ overflow: 'hidden' }}>
-                            <div onMouseDown={
-                                this.scoller
-                            } onMouseMove={this.scollerMove} className='img-wrap' id='scroller' style={{ width: '520px', transitionProperty: 'transform', transformOrigin: '0px 0px', transform: 'translate3d(0px,0px,0px) scale(1)', left: '0px' }}>
-                                <ul id='thelist' style={{ width: '520px' }}>
+                        <div className='limited-list' id='wrapper' >
+                            <div className='img-wrap' id='scroller' >
+                                <ul id='thelist' style={{ width: '100%' }}>
                                     {
                                         limitList.map(item => {
                                             return (
-                                                <li>
+                                                <li onClick={this.toTrip.bind(this,item.id)}>
                                                     <a>
                                                         <div className='tips-tit'>{item.title}</div>
                                                         <div className='tips-img'>

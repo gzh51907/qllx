@@ -12,6 +12,8 @@ import Line from './pages/Line/Line.jsx'
 import Login from './pages/Login/Login.jsx'
 import Reg from './pages/Reg/Reg.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
+import LineInfor from './pages/LineInfor/LineInfor.jsx'
+import LineDetail from './pages/LineDetail/LineDetail.jsx';
 import {connect} from 'react-redux';
 
 // 用户获取state数据
@@ -23,6 +25,7 @@ const mapStateToProps =(state)=>{
   };
 }
 @connect(mapStateToProps)
+
 @withRouter
 class App extends React.Component {
     componentDidMount(){
@@ -42,8 +45,8 @@ class App extends React.Component {
             text: '首页',
             icon: 'home'
         }, {
-            name: 'destination',
-            path: '/destination',
+            name: 'lineinfor',
+            path: '/Lineinfor',
             text: '目的地',
             icon: 'global'
         }, {
@@ -112,9 +115,11 @@ class App extends React.Component {
                     <Route path="/login" component={Login} />
                     <Route path="/reg" component={Reg} />
                     <Route path="/message" component={Message} />
-                    <Route path='/trip' component={Trip}></Route>
+                    <Route path='/trip/:ProductCode' component={Trip}></Route>
                     {/* <Route path='/discover/videodetail' component={Videodetail}/> */}
                     <Route path="/line" component={Line} />
+                    <Route path='/linedetail/:name' component={LineDetail}></Route>
+                    <Route path='/Lineinfor' component={LineInfor}></Route>
                     <Route path='/discover/videodetail/:id' component={Videodetail} />
                     <Redirect from='/' to="home" exact />
                     <Route render={() => <div><h1>404</h1>页面不存在</div>} />

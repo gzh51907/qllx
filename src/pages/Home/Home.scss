@@ -347,20 +347,22 @@ html,body{
                 background: #fff;
                 .img-wrap{
                     position: absolute;
-                    left:1.2rem;
+                    // left:1.2rem;
                     height: 100%;
+                    width: 100%;
                     ul{
-                        display: table;
-                        table-layout: fixed;
+                        // display: table;
+                        // table-layout: fixed;
                         white-space: nowrap;
                         height: 100%;
                         // width: 10rem;
-                        overflow: auto;
+                        overflow-x: auto;
+                        overflow-y:hidden;
                         li{
                             
-                            float: left;
+                            // float: left;
                             position: relative;
-                            display: inline-block;
+                            display: inline-table;
                             -webkit-box-flex: 1;
                             -webkit-box-align: center;
                             -webkit-box-pack: center;
