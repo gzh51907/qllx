@@ -1,16 +1,15 @@
 import React from 'react';
-import { tsConstructorType, appendToMemberExpression } from '@babel/types';
 import { Menu, Icon } from 'antd';
-import { Route, Switch,Redirect} from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import Home from './pages/Home/Home.jsx';
 import './App.css'
-// import Destination from './pages/destination'
-// import Message from './pages/message'
-// import Discover from './pages/discover'
-import Login from '~/Login/Login.jsx';
-import Reg from '~/Reg/Reg.jsx';
-import Mine from '~/Mine/Mine.jsx';
-// import store from '@/store';
+import Destination from './pages/Destination/Destination.jsx'
+import Message from './pages/Message/Message.jsx'
+import Trip from './pages/Trip/Trip.jsx'
+import Discover from './pages/Discover/Discover.jsx'
+import Mine from './pages/Mine/Mine.jsx'
+import Line from './pages/Line/Line.jsx'
+import Videodetail from './pages/Discover/Videodetail.jsx'
 import {connect} from 'react-redux';
 
 // 用户获取state数据
@@ -22,62 +21,104 @@ const mapStateToProps =(state)=>{
   };
 }
 @connect(mapStateToProps)
+@withRouter
 class App extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    console.log('App的props',this.props);
-    return (
-      <div>
-        <div className="footer" >
-          <div className="center-wrap JS_ftTab">
-            <a href="/" className="ft-btn-out curr">
-              <div className="ft-btn-inner">
-                <Icon type="home" className="icon-ft b1" style={{fontSize:25}}></Icon>
-                <p className='bottom-text'>首页</p>
-              </div>
-            </a>
-            <a href="/lineInfor/" className="ft-btn-out">
-              <div className="ft-btn-inner">
-                <Icon type="global" className="icon-ft b2" style={{fontSize:25}}></Icon>
-                <p className='bottom-text'>目的地</p>
-              </div>
-            </a>
-            <a href="/consult/" className="ft-btn-out">
-              <div className="ft-btn-inner">
-                <Icon type="message" className="icon-ft b4" style={{fontSize:25}}></Icon>
-                <p className='bottom-text'>咨询</p>
-              </div>
-            </a>
-            <a href="/discover/" className="ft-btn-out">
-              <div className="ft-btn-inner">
-                <Icon type="eye" className="icon-ft b3" style={{fontSize:25}}></Icon>
-                <p className='bottom-text'>发现</p>
-              </div>
-            </a>
+    componentDidMount(){
+        let {location:{pathname}} = this.props
+        this.setState ({
+            selected:[pathname]
+        })
+    }
+    constructor() {
+        super();
+    }
+    state = {
+        selected: ['/home'],
+        menu: [{
+            name: 'home',
+            path: '/home',
+            text: '首页',
+            icon: 'home'
+        }, {
+            name: 'destination',
+            path: '/destination',
+            text: '目的地',
+            icon: 'global'
+        }, {
+            name: 'message',
+            path: '/message',
+            text: '咨询',
+            icon: 'message'
+        }, {
+            name: 'discover',
+            path: '/discover',
+            text: '发现',
+            icon: 'eye'
+        }, {
+            name: 'mine',
+            path: '/mine',
+            text: '我的',
+            icon: 'user'
+        }]
+    }
+    render() {
 
-            <a href="/mine/" className="ft-btn-out">
-              <div className="ft-btn-inner">
-                <Icon type="user" className="icon-ft b5" style={{fontSize:25}}></Icon>
-                <p className='bottom-text'>我的</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/reg" component={Reg} />
-          <Route path="/mine" component={Mine} />
-          {/* <Route path="/message" component={Message} /> */}
-          <Redirect from='/' to="home" exact />
-          <Route render={() => <div><h1>404</h1>页面不存在</div>} />
-        </Switch>
-      </div>
+        let { selected, menu } = this.state
+        let { history, location } = this.props
+        const path = location.pathname;
+        //隐藏公共组件
 
-    )
-  }
+        return (
+            <div>
+                {
+                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 ?
+                        //不用隐藏
+                        <div>
+                            <div className="foot">
+                                <Menu
+                                    style={{ position: 'fixed', bottom: 0, zIndex: 999, width: '100%' }}
+                                    mode="horizontal"
+                                    selectedKeys={selected}
+                                    onSelect={({ key }) => {
+                                        console.log(key)
+                                        history.push(key)
+                                        this.setState({ selected: [key] })
+                                    }}>
+                                    {
+                                        menu.map(item => <Menu.Item key={item.path}>
+
+                                            <div className="b">
+                                                <Icon type={item.icon} />
+                                                {item.text}
+                                            </div>
+
+                                        </Menu.Item>)
+                                    }
+                                </Menu>
+                            </div>
+
+                        </div>
+                        :
+                        //隐藏
+                        <></>
+                }
+                <Switch>
+                    <Route path="/home" component={Home} />
+                    <Route path="/discover" component={Discover} exact />
+                    <Route path="/mine" component={Mine} />
+                    <Route path="/destination" component={Destination} />
+                    <Route path="/message" component={Message} />
+                    <Route path='/trip' component={Trip}></Route>
+                    {/* <Route path='/discover/videodetail' component={Videodetail}/> */}
+                    <Route path="/line" component={Line} />
+                    <Route path='/discover/videodetail/:id' component={Videodetail} />
+                    <Redirect from='/' to="home" exact />
+                    <Route render={() => <div><h1>404</h1>页面不存在</div>} />
+                </Switch>
+            </div>
+
+        )
+    }
 }
 
 
