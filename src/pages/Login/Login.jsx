@@ -6,12 +6,14 @@ import Api from '../../Api';
 import axios from 'axios'
 import store from '@/store';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom'
 const { Header, Footer, Content } = Layout;
 const mapStateToProps =(dispatch)=>{
     return dispatch
 
 }
 @connect(mapStateToProps)
+@withRouter
 // store.subscribe(()=>{
 //     console.log('subscribe:',store.getState())
 // })
@@ -28,7 +30,8 @@ class Login extends Component {
     }
 
     goto = (path)=>{
-        let {history} = this.props;
+        let {history,match} = this.props;
+        
         history.push(path)
     }
      handleSubmit =  (dispatch,e) =>{
@@ -61,7 +64,7 @@ class Login extends Component {
                         })
                         // let state = store.getState();
                         // console.log('state:',state);
-                    this.goto('/mine')
+                    this.props.history.go(-1)
                     alert("success");
                 }
 
@@ -70,8 +73,8 @@ class Login extends Component {
     }
 
     render() {
-        // console.log('1',this.props)
-        let {dispatch}  = this.props;
+        console.log('1',this.props)
+        let {dispatch,history}  = this.props;
         // console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         // <WrappedNormalLoginForm />

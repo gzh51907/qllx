@@ -11,3 +11,15 @@ import Line from '../pages/Line/Line.jsx'
 import Login from '../pages/Login/Login.jsx'
 import Reg from '../pages/Reg/Reg.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
+
+export default class RouterMap extends React.Component{
+    constructor(props,context){
+        super(props,context)
+    }
+}
+
+// render(){
+//     const routerConfig = [
+
+//     ]
+// }

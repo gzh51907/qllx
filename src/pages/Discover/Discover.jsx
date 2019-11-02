@@ -30,8 +30,21 @@ class Discover extends Component {
             remendata,
             tuijian
         })
+    
 
+    }
 
+    shouldComponentUpdate(){
+        let {username,history} = this.props;
+
+        // console.log('kankanusername，看',username[0])
+        console.log('kankanusername，看',username[0])
+        if( username[0] == undefined){
+            history.push('/login')
+        }else{
+           return true;
+        }
+        
     }
     render() {
         console.log(this.props)
