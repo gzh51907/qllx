@@ -3,6 +3,14 @@ import { Carousel } from 'antd';
 import { withRouter, Route } from 'react-router-dom'
 import axios from 'axios'
 import './Discover.scss'
+import {connect} from 'react-redux';
+// const { Header, Footer, Content } = Layout;
+const mapStateToProps =(dispatch)=>{
+    return dispatch
+
+}
+@connect(mapStateToProps)
+
 @withRouter
 class Discover extends Component {
     state = {
@@ -26,6 +34,7 @@ class Discover extends Component {
 
     }
     render() {
+        console.log(this.props)
         let { history } = this.props
         let { banner, tuijian, remendata } = this.state
         return (

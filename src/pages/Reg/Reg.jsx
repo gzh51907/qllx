@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { PageHeader, Input, Form, Checkbox, Button, Icon, Layout, List, Typography, Divider } from 'antd';
-import axios from 'axios'
+import axios from 'axios';
 import {
     Form,
     Input,
@@ -20,32 +20,43 @@ import {
 import './Reg.scss';
 import { ReactDOM } from 'react-dom'
 import Axios from '../../../node_modules/axios';
+import { connect } from 'react-redux';
 // import 'antd/dist/antd.css';
 const { Content } = Layout;
-
+const mapStateToProps = (dispatch)=>{
+    return dispatch
+}
+@connect(mapStateToProps)
 class Reg extends Component {
     constructor() {
         super();
-        console.log('constructor');
+        // console.log('constructor');
         this.state = {
-            qty: 1,
-            content: '<strong>laoxie</strong>'
+           username:''
         }
     }
-
-    handleSubmit = e => {
-        e.preventDefault();
+    goto = (path)=>{
+        let {history} = this.props;
+        history.push(path)
+    }
+    handleSubmit =(dispatch,e) => {
+        // e.preventDefault();
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                console.log(values);
+                // console.log(values);
                 let { username, password } = values;
                 let res = await axios.post('http://49.232.154.155:2003/user/reg',{  
                     username,
                     password
                 })
                 console.log(res);
-                
+                dispatch({type:'ADD_USERNAME',payload:          {username}
+                    })
+                this.goto('/mine');
+                alert("success");    
 
+            }else{
+                alert("我^%*&%(%^%&(")
             }
         })
     }
@@ -74,6 +85,7 @@ class Reg extends Component {
     //     }
     //   };
     render() {
+        let {dispatch} = this.props;
         const { getFieldDecorator } = this.props.form;
         console.log(this.props);
         return (
@@ -91,7 +103,8 @@ class Reg extends Component {
                     />
 
                     <Content style={{ padding: '0 50px' }}>
-                        <Form onSubmit={this.handleSubmit} className="login-form">
+                    <Form onSubmit={this.handleSubmit.bind(this,dispatch)} 
+                    className="login-form">
                             <Form.Item label="账户">
                                 {getFieldDecorator('username', {
                                     rules: [
