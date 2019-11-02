@@ -1,0 +1,197 @@
+.Message{
+    html, body, div, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, blockquote, table, th, td, dl, dt, dd, header, footer, nav, section, article, aside {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    a{
+        text-decoration: none;
+    }
+    .c-ico {
+        display: inline-block;
+        vertical-align: middle;
+        background: url(https://m.qulv.com/consult/images/iconConstact.png) no-repeat;
+        background-size: 1rem 9rem;
+    }
+    ul,li,ol{
+        list-style: none;
+    }
+    header {
+        position: fixed;
+        width: 100%;
+        height: .88rem;
+        line-height: .88rem;
+        font-size: 16px;
+        color: #666;
+        z-index: 99;
+        .hd-content {
+            position: relative;
+            margin: 0 auto;
+            padding: .1rem .93rem 0 .76rem;
+            width: 7.5rem;
+            height: .88rem;
+            line-height: .88rem;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            .hd-tit {
+                position: absolute;
+                left: 0;
+                top: 0;
+                margin: 0 .75rem;
+                width: 6rem;
+                text-align: center;
+                font-size: .3rem;
+            }
+        }
+    }
+    .wrap.pd-88{
+        padding-top: .88rem;
+    }
+    .wrap {
+        background: #eee;
+        max-width: 750px;
+        margin: 0 auto;
+        background-color: #eee;
+        padding-bottom: 1.3rem;
+        .contact-top {
+            border: 1px solid #e6e6e6;
+            height: 2.6rem;
+            margin: .2rem 0;
+            background: #fff;
+            ul{
+                li{
+                    float: left;
+                    width: 50%;
+                    text-align: center;
+                    position: relative;
+                    span{
+                        display: block;
+                        width: 1.18rem;
+                        height: 1.18rem;
+                        background: #61b30b;
+                        border-radius: .24rem;
+                        margin: .4rem auto .22rem;
+                        position: relative;
+                        .c-ico{
+                            width: .65rem;
+                            height: .91rem;
+                            background-position: -0.19rem -0.05rem;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                    p{
+                        font-size: .3rem;
+                        color: #61b30b;
+                        padding-bottom: .2rem;
+                    }
+                }
+                li:last-child:after{
+                    content: "";
+                    display: block;
+                    width: .02rem;
+                    background: #eee;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    height: 1.75rem;
+                    transform: translate(0, -50%);
+                }
+                li.online{
+                    span{
+                        background: #379bed;
+                        position: relative;
+                        .c-ico {
+                            width: .74rem;
+                            height: .62rem;
+                            background-position: -0.15rem -1.04rem;
+                        }
+                        label{
+                            position: absolute;
+                            display: block;
+                            width: .6rem;
+                            height: .3rem;
+                            text-align: center;
+                            border: 1px solid #f54e00;
+                            border-radius: .04rem;
+                            line-height: .3rem;
+                            top: .05rem;
+                            right: -0.72rem;
+                            font-size: .22rem;
+                            color: #f54e00;
+                        }
+                    }
+                    p{
+                        color: #379bed;
+                    }
+                }
+            }
+            ul:after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+        .contact-list{
+            background: #fff;
+            margin: .2rem 0;
+            h4{
+                font-size: .3rem;
+                height: .88rem;
+                line-height: .88rem;
+                text-align: center;
+            }
+            ul{
+                width: 100%;
+                border-top: .02rem solid #f5f5f5;
+                overflow: hidden;
+                li{
+                    float: left;
+                    border-bottom: .02rem solid #f5f5f5;
+                    width: 2.5rem;
+                    height: 2rem;
+                    text-align: center;
+                    position: relative;
+                    .c-ico{
+                        display: inline-block;
+                        width: .64rem;
+                        height: .64rem;
+                        background-position: -0.23rem -1.79rem;
+                        margin: .4rem 0 .24rem 0;
+                    }
+                    p{
+                        font-size: .26rem;
+                        color: #999;
+                    }
+                }
+                li:after{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: .02rem;
+                    height: 1.94rem;
+                    background: #f5f5f5;
+                }
+            }
+
+        }
+        .contact-foot{
+            background: #fff;
+            text-align: center;
+            font-size: .3rem;
+            height: .9rem;
+            line-height: .9rem;
+            margin-bottom: .74rem;
+            a{
+                color: #3e3e3e;
+            }
+        }
+        h4{
+            font-weight: normal;
+        }
+    }
+}

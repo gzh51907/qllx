@@ -389,22 +389,20 @@ html, body {
 
 .Home_container .wrap .limited-wrap .limited-list .img-wrap {
   position: absolute;
-  left: 1.2rem;
   height: 100%;
+  width: 100%;
 }
 
 .Home_container .wrap .limited-wrap .limited-list .img-wrap ul {
-  display: table;
-  table-layout: fixed;
   white-space: nowrap;
   height: 100%;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .Home_container .wrap .limited-wrap .limited-list .img-wrap ul li {
-  float: left;
   position: relative;
-  display: inline-block;
+  display: inline-table;
   -webkit-box-flex: 1;
   -webkit-box-align: center;
   -webkit-box-pack: center;

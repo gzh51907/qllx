@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Trip.scss';
 import { Icon, Carousel } from 'antd';
 import axios from 'axios';
+import lazyImg from './lazyImg.js';
 
 class Trip extends Component {
     state = {
@@ -10,13 +11,7 @@ class Trip extends Component {
         MiddleHotelQty: 1
     }
     async componentDidMount() {
-        // let { Data } = await axios.get('https://m.qulv.com/api/v2/PriceCalendar/GetPriceCalendar', {
-        //     params: {
-        //         cabinID: '4dbf0921-0bbd-47d0-a54d-8e0aee756f9b',
-        //         SkuCode: 'L00000204006'
-        //     }
-        // })
-        // console.log(Data)
+        let { data } = await axios.get('http://49.232.154.155:2003/trip/init');
         window.onscroll = function () {
             let header = document.getElementsByClassName('top-header')[0];
             if (window.scrollY > 200) {
@@ -25,17 +20,33 @@ class Trip extends Component {
                 header.classList.remove('active')
             }
         }
+        let PriceData = [];
+        data[0].Data.forEach(item => {
+            PriceData = PriceData.concat(item.LowestPriceGroups)
+        })
+        this.setState({
+            PriceData: PriceData
+        })
+
     }
 
     goback = () => {
+
         let { history } = this.props;
-        history.push(-1)
+        history.go(-1)
     }
     checkPrice(e) {
-        let _this = this;
-        console.log(e.currentTarget)
-        let icons = document.querySelectorAll('.liCon .icon');
-
+       
+        let Current = e.currentTarget;
+        let dataList = document.querySelectorAll('.dataLi');
+       
+        let i =  Current.getElementsByClassName('icon')[0];
+        dataList.forEach(item=>{
+            item.classList.remove('active');
+            // item.getElementsByClassName('icon')[0].remove('icon-itemActive')
+        })
+        i.classList.add('icon-itemActive')
+        Current.classList.add('active')
     }
     Roomdown = () => {
         let { HotelQty } = this.state;
@@ -49,7 +60,7 @@ class Trip extends Component {
         })
     }
     RoomAdd = () => {
-        console.log(1)
+        // console.log(1)
         let { HotelQty } = this.state;
         HotelQty++;
         // console.log(num)
@@ -69,13 +80,54 @@ class Trip extends Component {
         })
     }
     MiddleRoomAdd = () => {
-        console.log(1)
+
         let { MiddleHotelQty } = this.state;
         MiddleHotelQty++;
         // console.log(num)
         this.setState({
             MiddleHotelQty
         })
+    }
+    closeMoyo = (isok) => {
+        let moyoffWin = document.getElementsByClassName('moyoffWin')[0]
+
+
+        if (isok) {
+            moyoffWin.style.display = 'block';
+        } else {
+            moyoffWin.style.display = 'none';
+        }
+
+    }
+    menuShow = (isok) => {
+
+        let menu = document.getElementsByClassName('menu')[0];
+
+        if (isok) {
+            menu.style.display = 'block';
+
+        } else {
+            menu.style.display = 'none';
+        }
+
+
+
+    }
+    discountShow = (isok) => {
+        let discount = document.getElementsByClassName('discount')[0];
+        if (isok) {
+            discount.style.display = 'block';
+        } else {
+            discount.style.display = 'none';
+        }
+    }
+    cityShow = (isok) => {
+        let cityCover = document.getElementsByClassName('cityCover')[0];
+        if (isok) {
+            cityCover.style.display = 'block';
+        } else {
+            cityCover.style.display = 'none';
+        }
     }
     fade = (i) => {
 
@@ -95,8 +147,21 @@ class Trip extends Component {
 
 
     }
+    toPage = (name,e)=>{
+        let el = document.getElementsByName(name)[0];
+        el.scrollIntoView()
+        let tab = document.getElementsByClassName('tab')[0];
+        tab.childNodes.forEach(item=>{
+            item.classList.remove('active')
+        })
+        e.currentTarget.classList.add('active');
+
+    }
     render() {
-        let { HotelQty, MiddleHotelQty } = this.state;
+    
+        let {ProductCode} = this.props.match.params;
+        let { HotelQty, MiddleHotelQty, PriceData } = this.state;
+        // console.log(PriceData)
         return (
             <div className='Trip_container'>
                 <div className='top-header'>
@@ -105,17 +170,17 @@ class Trip extends Component {
                             <i className="icon icon-arrowL"></i>
                         </span>
                         <div className='tab'>
-                            <span className='active'>
+                            <span className='active' onClick={this.toPage.bind(this,'cp')}>
                                 <em>产品</em>
                             </span>
-                            <span>
+                            <span onClick={this.toPage.bind(this,'xc')}>
                                 <em>行程</em>
                             </span>
-                            <span>
+                            <span  onClick={this.toPage.bind(this,'fy')}>
                                 <em>费用</em>
                             </span>
                         </div>
-                        <div className='share'>
+                        <div className='share' onClick={this.menuShow.bind(this, true)}>
                             <span className='menuIcon'>
                                 <em></em>
                                 <em></em>
@@ -123,9 +188,17 @@ class Trip extends Component {
                             </span>
                         </div>
                     </div>
-
+                    <div className="menu" id="menuCover" onClick={this.menuShow.bind(this, false)} style={{ display: 'none' }}>
+                        <div className="menuList">
+                            <em></em>
+                            <p><i className="icon icon-home"></i><span>首页</span></p>
+                            <p><i className="icon icon-search2"></i><span>搜索</span></p>
+                            <p className="share-item"><i className="icon icon-share"></i><span>分享</span></p>
+                            <p><i className="icon icon-footprint"></i><span>足迹</span></p>
+                        </div>
+                    </div>
                 </div>
-                <div className='bannerMain'>
+                <div className='bannerMain' name='cp'>
                     <div className='product-type'>自由行</div>
                     <div className='banner'>
                         {/* <div className='swiper-container swiper-container-horizatal'></div> */}
@@ -136,7 +209,7 @@ class Trip extends Component {
                             <img src='https://upload.qulv.com/release//2019/01/22/13/55/ip04l0rh.ugc.jpeg'></img>
                             <img src='https://upload.qulv.com/release//2019/01/22/13/55/vlcxzzs4.hhl.jpg'></img>
                         </Carousel>
-                        <div className='code'>编号：L00000204006</div>
+                        <div className='code'>编号：{ProductCode}</div>
                         {/* <div className='sideNum'>
                             <span id='pageNum'>1</span>
                             <span>/5</span>
@@ -161,7 +234,7 @@ class Trip extends Component {
                         </p>
                     </div>
                 </div>
-                <div className='moneyoff' >
+                <div className='moneyoff' onClick={this.closeMoyo.bind(this, true)}>
                     <p>
                         <span>满减</span>
                     </p>
@@ -174,7 +247,7 @@ class Trip extends Component {
                     <p>
                         <span>领券</span>
                     </p>
-                    <p className='share openDiscount'>
+                    <p className='share openDiscount' onClick={this.discountShow.bind(this, true)}>
                         <span id='ticketsTab'></span>
                         <i className='icon icon-arrowR'></i>
                     </p>
@@ -188,7 +261,7 @@ class Trip extends Component {
                                 出发
                             </span>
                         </p>
-                        <p className='flex-item openCity'>
+                        <p className='flex-item openCity' onClick={this.cityShow.bind(this, true)}>
                             <span>
                                 <b id='cityListNum'>14</b>
                                 个城市可选
@@ -220,17 +293,23 @@ class Trip extends Component {
                         </div>
                         <div className='scoller'>
                             <ul className='dataRow'>
-                                <li className='dataLi' onClick={(e) => this.checkPrice(e)}>
-                                    <div className='liCon'>
-                                        <span>
-                                            <em className='timeText'>11-05</em>
-                                            <em>周二</em>
-                                        </span>
-                                        <span>实时询价</span>
-                                        <i className='icon icon-itemActive'></i>
-                                    </div>
-                                </li>
 
+                                {
+                                    PriceData.map(item => {
+                                        return (
+                                            <li key={item.DepartureDate} className='dataLi' onClick={(e) => this.checkPrice(e)}>
+                                                <div className='liCon'>
+                                                    <span>
+                                                        <em className='timeText'>{item.DepartureDateStr}</em>
+                                                        <em>{item.Day}</em>
+                                                    </span>
+                                                    <span>实时询价</span>
+                                                    <i className='icon'></i>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </div>
                         <div className='change-more openCalendar'>
@@ -380,14 +459,14 @@ class Trip extends Component {
                                             <a href='https://m.qulv.com/hotel/d857c445-0b5a-64a6-27d5-c761c0a31b48.html'>
                                                 <div className='hotelInfo fn-clear'>
                                                     <div className='imgBox'>
-                                                        <img src='https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104012664_13.jpg'></img>
+                                                        <img src='https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104012664_13.jpg' lazy='y'></img>
                                                     </div>
                                                     <div className='txtBox'>
                                                         <p className='txt3 fn-clear'>
                                                             {/* 豪华房 */}
                                                             <span className='fn-left'>豪华房</span>
                                                         </p>
-                                                        <p className='txt4 fn-clear' taglist>
+                                                        <p className='txt4 fn-clear'>
                                                             {/* 可住2人 */}
                                                             <em>可住2人</em>
                                                         </p>
@@ -424,14 +503,14 @@ class Trip extends Component {
                                             <a href='https://m.qulv.com/hotel/d857c445-0b5a-64a6-27d5-c761c0a31b48.html'>
                                                 <div className='hotelInfo fn-clear'>
                                                     <div className='imgBox'>
-                                                        <img src='https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104349258_46.jpeg'></img>
+                                                        <img src='https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104349258_46.jpeg' lazy='y'></img>
                                                     </div>
                                                     <div className='txtBox'>
                                                         <p className='txt3 fn-clear'>
                                                             {/* 豪华房 */}
                                                             <span className='fn-left'>豪华房</span>
                                                         </p>
-                                                        <p className='txt4 fn-clear' taglist>
+                                                        <p className='txt4 fn-clear'>
                                                             {/* 可住2人 */}
                                                             <em>可住2人</em>
                                                         </p>
@@ -469,14 +548,14 @@ class Trip extends Component {
                                     <a href='https://m.qulv.com/hotel/9f4127b3-489f-695b-350a-9e2c2ddcaf47.html'>
                                         <div className='hotelInfo fn-clear'>
                                             <div className='imgBox'>
-                                                <img src='https://upload.qulv.com/release//2018/07/16/11/50/yhywe013.s05.jpg'></img>
+                                                <img src='https://upload.qulv.com/release//2018/07/16/11/50/yhywe013.s05.jpg' lazy='y'></img>
                                             </div>
                                             <div className='txtBox'>
                                                 <p className='txt3 fn-clear'>
                                                     {/* 豪华房 */}
                                                     <span className='fn-left'>基础房(Standard Room)</span>
                                                 </p>
-                                                <p className='txt4 fn-clear' taglist>
+                                                <p className='txt4 fn-clear'>
                                                     {/* 可住2人 */}
                                                     <em>一张大床</em>
                                                     <em>可住2人</em>
@@ -494,7 +573,7 @@ class Trip extends Component {
                     </div>
                 </div>
                 <div className='free route topItem'>
-                    <div className='title'>
+                    <div className='title' name='xc'>
                         <span></span>
                         <div>
                             <i className='icon icon-xingcheng'></i>
@@ -546,11 +625,11 @@ class Trip extends Component {
                                         </p>
                                         <ul className='spotImg fn-clear'>
                                             <li>
-                                                <img src='https://upload.qulv.com/release//2018/04/03/17/31/kr5x2rwt.o5y.jpg' alt='岛屿介绍'></img>
+                                                <img src='https://upload.qulv.com/release//2018/04/03/17/31/kr5x2rwt.o5y.jpg' alt='岛屿介绍' lazy='y'></img>
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src='https://upload.qulv.com/release//2018/04/03/17/31/5fuqrsbf.fqi.jpg'></img>
+                                                <img src='https://upload.qulv.com/release//2018/04/03/17/31/5fuqrsbf.fqi.jpg' lazy='y'></img>
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -611,19 +690,19 @@ class Trip extends Component {
                                         <p>&nbsp;</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104020570_83.jpg" alt="沙滩房-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104020570_83.jpg" lazy='y' alt="沙滩房-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104012664_13.jpg" alt="沙滩房-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104012664_13.jpg" lazy='y' alt="沙滩房-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2015-03/20150311152149585_89.jpg" alt="沙滩房-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2015-03/20150311152149585_89.jpg" lazy='y' alt="沙滩房-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2017-06/20170605174630300_17.jpg" alt="沙滩房-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2017-06/20170605174630300_17.jpg" lazy='y' alt="沙滩房-0" />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -642,19 +721,19 @@ class Trip extends Component {
                                         <p>&nbsp;</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2017-06/20170605174742505_49.jpg" alt="水上屋-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2017-06/20170605174742505_49.jpg" lazy='y' alt="水上屋-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104349258_46.jpeg" alt="水上屋-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104349258_46.jpeg" lazy='y' alt="水上屋-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104420617_20.jpg" alt="水上屋-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2014-03/20140327104420617_20.jpg" lazy='y' alt="水上屋-0" />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2015-03/20150311153223437_103.jpg" alt="水上屋-0" />
+                                                <img src="https://upload.qulv.com/release//Qulv.ERP.Web.FileCategory/2015-03/20150311153223437_103.jpg" lazy='y' alt="水上屋-0" />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -680,7 +759,7 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑' }}>餐厅介绍：在Riveli (马尔地夫语意指“光束”)，您将对亚洲、地中海和马尔地夫各地风味的和谐融合产生极大兴趣。饱餐一顿瑞典式自助餐和套餐，同时让眼睛也得到美景的滋养。</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/33/oyi35a53.4hc.jpg" alt="Riveli Restaurant-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/33/oyi35a53.4hc.jpg" alt="Riveli Restaurant-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -697,7 +776,7 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑' }}>餐厅介绍：Velaavani指海龟聚集的浅湾。这个水边酒吧与环礁湖和暗礁相临，可整日提供清爽的鸡尾酒和味美的小吃，时而还能发现海龟甚至是罕见的海豚</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/48/winss415.lzf.jpg" alt="The Velaavani Bar-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/48/winss415.lzf.jpg" alt="The Velaavani Bar-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -723,11 +802,11 @@ class Trip extends Component {
                                         <p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/hbnwgre5.tx4.jpg" alt="SPA-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/hbnwgre5.tx4.jpg" alt="SPA-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/jmvx1mud.44h.jpg" alt="SPA-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/jmvx1mud.44h.jpg" alt="SPA-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -744,11 +823,11 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑', }}>潜水学习中心，首先在岸上教会你如何呼吸，换气，排水等步骤，到了水下，教练会按照指示，来领着我们潜水。潜水一开始有绳子，之后会下降到10 米-20米左右看珊瑚。整个过程很顺利，只要听从教练的话就可以。</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/ih4xwm3e.skz.jpg" alt="潜水-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/ih4xwm3e.skz.jpg" alt="潜水-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/3btpk25x.0ku.jpg" alt="潜水-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/3btpk25x.0ku.jpg" alt="潜水-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -765,11 +844,11 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑' }}>每天都会有出海垂钓，那里有各种品种多样的海洋鱼类，钓上岸的鱼，你还可以带回酒店由顶端的大厨为你烹饪出一道可口的菜式。</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/rayacibr.t3p.jpg" alt="出海垂钓-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/rayacibr.t3p.jpg" alt="出海垂钓-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/guec2j4d.rox.jpg" alt="出海垂钓-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/49/guec2j4d.rox.jpg" alt="出海垂钓-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -786,11 +865,11 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑' }}>乘坐帆船出海，在海中央欣赏可爱的海豚，在大海中，海豚在海里疯狂的游泳，下潜，上跃，描画完美弧线。定能让您拥有不一样的体验。</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/njza0hf0.bkb.jpg" alt="出海看海豚-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/njza0hf0.bkb.jpg" alt="出海看海豚-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/r0kra0z5.nej.jpg" alt="出海看海豚-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/r0kra0z5.nej.jpg" alt="出海看海豚-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -807,11 +886,11 @@ class Trip extends Component {
                                         <p></p><p style={{ fontFamily: '微软雅黑' }}>配备跑步机、哑铃杠铃、建身自行车及其它力量和心肺训练设备，使您即使在假期中也能继续健身计划。借助iPod播放运动感十足的音乐，或观赏最近的新闻或HBO影片, 伴您大量消耗卡路里。</p><p></p>
                                         <ul className="spotImg fn-clear">
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/knlk3ttj.mty.jpg" alt="健身房-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/knlk3ttj.mty.jpg" alt="健身房-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/ghgzljhx.yly.jpg" alt="健身房-0" />
+                                                <img src="https://upload.qulv.com/release//2018/04/03/17/50/ghgzljhx.yly.jpg" alt="健身房-0" lazy='y' />
                                                 <p></p>
                                             </li>
                                         </ul>
@@ -854,7 +933,7 @@ class Trip extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='fadeIn fadeInBtn' style={{display:'none'}} onClick={this.fade.bind(this,5)}>
+                        <div className='fadeIn fadeInBtn' style={{ display: 'none' }} onClick={this.fade.bind(this, 5)}>
                             <span>展开</span>
                             <i className='icon icon-arrowT'></i>
                         </div>
@@ -864,14 +943,14 @@ class Trip extends Component {
 
                         </i>
                         <div className="hotelItem-list">
-            <div className="hotelItem">
-                <div className="titleItem">
-                    <p><span>住宿</span></p>
-                </div>
-                    <p><span>蓝色美人蕉 </span></p>
-            </div>
-        </div>
-                        <div className='fadeIn fadeInBtn' style={{display:'none'}}>
+                            <div className="hotelItem">
+                                <div className="titleItem">
+                                    <p><span>住宿</span></p>
+                                </div>
+                                <p><span>蓝色美人蕉 </span></p>
+                            </div>
+                        </div>
+                        <div className='fadeIn fadeInBtn' style={{ display: 'none' }}>
                             <span>展开</span>
                             <i className='icon icon-arrowT'></i>
                         </div>
@@ -882,10 +961,174 @@ class Trip extends Component {
                     <h2>产品特色</h2>
                     <div className='costMain'>
                         <div className='costList pdTese'>
-                        <p style={{margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif',  color: '#666666'}}>1、马代最受欢迎的优质小岛之一，房间有看海玻璃茶几观看海底鱼类，法国人经营的小岛处处有浪漫。</p>
-                        <p style={{margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif',  color: '#666666'}}>2、沙滩细白，优质浮潜环境深受欧美人及浮潜发烧友的喜爱。沙滩出去2米即可享受珊瑚海底世界；大面积的珊瑚礁围绕着岛屿。提供免费浮潜用具。</p>
-                        <p style={{margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif',  color: '#666666'}}>3、性价比高，价格亲民，活动丰富且自费项目价格实惠。</p>
+                            <p style={{ margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif', color: '#666666' }}>1、马代最受欢迎的优质小岛之一，房间有看海玻璃茶几观看海底鱼类，法国人经营的小岛处处有浪漫。</p>
+                            <p style={{ margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif', color: '#666666' }}>2、沙滩细白，优质浮潜环境深受欧美人及浮潜发烧友的喜爱。沙滩出去2米即可享受珊瑚海底世界；大面积的珊瑚礁围绕着岛屿。提供免费浮潜用具。</p>
+                            <p style={{ margin: '0px', padding: '0px', border: '0px', fontVariantNumeric: 'inherit', fontStretch: 'inherit', lineHeight: 'inherit', fontFamily: 'Microsoft Yahei arial verdana sans-serif', color: '#666666' }}>3、性价比高，价格亲民，活动丰富且自费项目价格实惠。</p>
                         </div>
+                    </div>
+                </div>
+                <ul className='costImgList'>
+                    <li>
+                        <img src='https://upload.qulv.com/release//2018/04/27/11/05/dvhruli0.xbc.jpg' lazy='y'></img>
+                    </li>
+                    <li>
+                        <img src='https://upload.qulv.com/release//2018/04/27/11/05/c0bjp033.w1b.jpg' lazy='y'></img>
+                    </li>
+                    <li>
+                        <img src='https://upload.qulv.com/release//2018/04/27/11/05/11ktupns.ax2.jpg' lazy='y'></img>
+                    </li>
+                    <li>
+                        <img src='https://upload.qulv.com/release//2018/04/27/11/05/x1a5cx2h.gow.jpg' lazy='y'></img>
+                    </li>
+                    <li>
+                        <img src='https://upload.qulv.com/release//2018/04/27/11/05/v3hqpquu.qer.jpg' lazy='y'></img>
+                    </li>
+                </ul>
+                <div className='consult'>
+                    <div className='consultMes'>
+                        <img src='https://static.qtour.com/images/icon-service.9b68a23.png'></img>
+                        <p>
+                            <span>旅游顾问</span>
+                            <span>了解行程，住宿，预定等信息，请咨询顾问</span>
+                        </p>
+                    </div>
+                    <span className='callKF'>资讯顾问</span>
+                </div>
+                <div className='cost topItem' name='fy'>
+                    <h2>费用说明</h2>
+                    <div className='costMain'>
+                        <div className='costList'>
+                            <p>
+                                <i className='icon icon-tip'></i>
+                                <span>费用包含</span>
+                            </p>
+                            <p style={{ fontFamily: '微软雅黑' }}>1. 机票:套餐所对应的国内出发口岸往返马尔代夫经济舱机票含税，机票一经开出，不得更改、不得签转、不得退票。（相对应的航空公司参考航班信息）</p>
+                            <p>2. 住宿:酒店套餐中包含的四晚度假岛屿住宿(2人1房计，如有双房型混住，房型入住先后顺序最终以酒店安排为准）</p>
+                            <p>3. 含餐:酒店套餐所含餐型（如因接送或其他原因造成无法用餐，餐费不退）</p>
+                            <p>4. 上岛交通:酒店套餐中包含的马累机场至度假岛屿往返交通费</p>
+                            <p><span style={{ fontSize: '12px', fontFamily: '微软雅黑 sans-serif' }}>5. 7</span><span style={{ fontSize: '12px', fontFamily: '微软雅黑 sans-serif' }}>天5晚行程:含第一晚或最后一晚入住马累Qinn 或同级三星酒店(含早餐)</span></p>
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div className='costMain'>
+                        <div className="costList">
+                            <p><i className="icon icon-tip"></i><span>费用不包含</span></p>
+                            <p style={{ fontFamily: '微软雅黑' }}>1.不可抗力：因交通延阻、罢工、天气、飞机、机器故障、航班取消或更改时间等不可抗力原因所导致的额外费用</p>
+                            <p>2.个人消费：酒店内洗衣、理发、电话、传真、收费电视、饮品、烟酒等个人消费，当地参加的自费项目以及 “费用包含”中不包含的其它项目</p>
+                            <p>3.行李费：出入境个人物品海关征税，超重行李的托运费、保管费</p>
+                            <p>4.单房差：第三成人价格和单房差请报名时联系客服咨询</p>
+                            <p>5.儿童：马尔代夫一般2-12岁属于小童，儿童报名详情和价格请联系客服咨询</p>
+                            <p>6.其他：旅客从出发地往返出境口岸机场的交通费用；升级舱位、升级酒店、升级房型等产生的差价</p>
+                        </div>
+                    </div>
+                </div>
+                <div className='attention'>
+                    <ul className='attentionList' id='tipList'>
+                        <li>
+                            <h2>预订须知</h2><i className="icon icon-arrowR"></i>
+                        </li>
+                        <li>
+                            <h2>特殊限制</h2><i className="icon icon-arrowR"></i>
+                        </li>
+                        <li>
+                            <h2>安全提示</h2><i className="icon icon-arrowR"></i>
+                        </li>
+                        <li>
+                            <h2>签约方式</h2><i className="icon icon-arrowR"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div className="moyoffWin">
+                    <div className="gallery" onClick={this.closeMoyo.bind(this, false)}></div>
+                    <div className="moyoffMain">
+                        <p>
+                            <span>满减活动</span>
+                            <i className="icon icon-close closeBtn" onClick={this.closeMoyo.bind(this, false)}></i>
+                        </p>
+                        <div>
+                            <ul id="moyoffList"></ul>
+                        </div>
+                        <p className="instru">
+                            说明：满减活动在时间范围内，跟其他优惠券不冲突
+		                </p>
+                    </div>
+                </div>
+                <div className="tip">
+                    <i className="icon icon-successTip"></i>
+                    <p>领取成功</p>
+                </div>
+                <div className="discount" id="discountbox">
+                    <div className="gallery" onClick={this.discountShow.bind(this, false)}></div>
+                    <div className="discountMain">
+                        <p><span>优惠券</span><i className="icon icon-close closeBtn" onClick={this.discountShow.bind(this, false)}></i></p>
+                        <div id="discountScroller">
+                            <div id="discount">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="cityCover closeCover" id="cityCover" style={{ display: 'none' }}>
+                    <div className="gallery" onClick={this.cityShow.bind(this, false)}></div>
+                    <div className="cityCon">
+                        <p><span>选择出发城市</span><i className="icon icon-close closeCity" onClick={this.cityShow.bind(this, false)}></i></p>
+                        <ul className="cityList" id="cityList">
+                            <li data-departure-cityid="ac5d20e9-e404-4be5-9803-47a5e5f51b9f" data-sku-code="L00000204007">
+                                <p>广州</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="09daea66-f18e-4acb-adcc-4ab8c5b51a7b" data-sku-code="L00000204018">
+                                <p>武汉</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="b61eb09e-4c2a-4ed5-8db0-e046638d0412">
+                                <p>郑州</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="3731f9ba-7c35-40a6-b184-312071549e39">
+                                <p>南京</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="28088ae7-8ff2-4867-b7ab-6a8f37e0418b" data-sku-code="L00000204001">
+                                <p>上海</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="805b06ad-bb60-42d4-b94e-5140b49f9af9" data-sku-code="L00000204009">
+                                <p>成都</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="de5626d9-678e-4fed-9fc7-c4e0ba29e1be">
+                                <p>天津</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="6a51dbb2-baa9-4a6c-bfd7-c8e5d4d8a5ac">
+                                <p>福州</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="75b6fdde-da1a-4549-988d-0a2fac6cce50" data-sku-code="L00000204012">
+                                <p>昆明</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="8c513a0d-c27e-4d7f-8986-a25e92a6951c" data-sku-code="L00000204010">
+                                <p>重庆</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="831ea106-da45-40e8-b6e9-62f853db5dda" data-sku-code="L00000204017">
+                                <p>西安</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="6bf976a1-eba7-435b-92be-b05eb8ace77b" data-sku-code="L00000204013">
+                                <p>杭州</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="b1ea06a6-5143-482f-86f9-1c5234172c26" data-sku-code="L00000204005">
+                                <p>北京</p>
+                                <span>实时询价</span>
+                            </li>
+                            <li data-departure-cityid="6fcd9501-7793-48eb-8ec2-cabe12e08bf7" className="active" data-sku-code="L00000204006">
+                                <p>香港</p>
+                                <span>实时询价</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
