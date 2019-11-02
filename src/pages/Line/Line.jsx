@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Tabs, BackTop  } from 'antd';
+import axios from 'axios'
 import './Line.scss';
 import $ from 'jquery'
 const { TabPane } = Tabs;
 @withRouter
 class Line extends Component {
-    componentDidMount(){
-        
+    async componentDidMount(){
+            //请求
+            let res = await axios.get('http://127.0.0.1:3001/line/init')
+            console.log('res',res)
+            this.setState({
+                listdata:res.data
+            })
+            {
             (function(){
                 console.log(1)
                 var showMoreNChildren = function ($children, n) {
@@ -37,8 +44,20 @@ class Line extends Component {
                         });
                     }
                 });
-            })()
-        
+            })();
+            (function(){
+                $('.show-dialog-bd-3 ul').on('click','li',function(){
+                    $(this).addClass('active').siblings().removeClass('active');
+                    $(this).parent().parent().parent().css('display','none')
+                })
+                $('#show-btn-3').click(function(){
+                    $('#show-dialog-3').css('display','block')
+                })
+                $('.gallery').click(function(){
+                    $('#show-dialog-3').css('display','none')
+                })
+            })();
+        }
     }
     state = {
         tabdata: [
@@ -51,132 +70,11 @@ class Line extends Component {
             'WIFI',
             '租车'
         ],
-        listdata:[
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2015-05/20150508174236927_91.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'马尔代夫绚丽岛 Rannalhi7天5晚自由行 (4钻)',
-                productlabel:['好评率高','现货热卖'],
-                price:9999,
-                number:28,
-                satisfaction:95
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【上海出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:10500,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'广州出发',
-                tripname:'【广州出发】马尔代夫蓝色美人蕉Thulhagiri6天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:10380,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【全国多地出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:9780,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【全国多地出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:9780,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【全国多地出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:9129,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【全国多地出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:9129,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170622145503010_27.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【全国多地出发】马尔代夫蓝色美人蕉Thulhagiri7天5晚自由行（4钻）+高性价比+法式浪漫+蜜月礼',
-                productlabel:['爆款','好评率高','现货','特价','现货热卖'],
-                price:9129,
-                number:20,
-                satisfaction:94
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170627110832836_92.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【上海出发】马尔代夫阿玛瑞豪沃达 Amari7天5晚自由行 (5钻)私密性高+浮潜圣地+美食多样',
-                productlabel:['热卖','特价','暑期'],
-                price:13109,
-                number:6,
-                satisfaction:98
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170627110832836_92.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【上海出发】马尔代夫阿玛瑞豪沃达 Amari7天5晚自由行 (5钻)私密性高+浮潜圣地+美食多样',
-                productlabel:['热卖','特价','暑期'],
-                price:12800,
-                number:6,
-                satisfaction:98
-            },
-            {
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170627110832836_92.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【上海出发】马尔代夫阿玛瑞豪沃达 Amari7天5晚自由行 (5钻)私密性高+浮潜圣地+美食多样',
-                productlabel:['热卖','特价','暑期'],
-                price:13109,
-                number:6,
-                satisfaction:98
-            },{
-                imgurl:'http://pic.qtour.com/Upload/travel_line/2017-06/20170626160730811_86.jpg',
-                way:'自由行',
-                origin:'上海出发',
-                tripname:'【上海出发】马尔代夫波杜希蒂Bodu Hithi7天5晚自由行（5钻）私人泳池+超大别墅+按摩浴缸+蜜月亲子',
-                productlabel:['爆款','现货','销量第一'],
-                price:14200,
-                number:130,
-                satisfaction:96
-            }
-        ]
+        listdata:[]
     }
     render() {
         let { history } = this.props;
         let {tabdata,listdata} = this.state;
-        console.log(2)
         return (
             <div id='line'>
           
@@ -198,9 +96,11 @@ class Line extends Component {
                             <TabPane tab={i} key={i} className="ui-list" style={{background:'#FFFFFF'}}>
                                 <ul className="showMoreNChildren">
                                     {
+                                        listdata ?
+
                                         listdata.map(item=>{
                                             return(
-                                                <li >
+                                                <li key={item._id}>
                                                     <a href="https://m.qulv.com/Newdetail/Detail/detail.html?id=73856">
                                                         <div className="ui-list-img">
                                                             <img src={item.imgurl} alt={item.tripname} lazy="y" style={{opacity: 1}}/>
@@ -214,7 +114,7 @@ class Line extends Component {
                                                             <p className="tag-list" productlabel="好评率高,现货热卖">
                                                                 {item.productlabel.map(i=>{
                                                                     return(
-                                                                        <span className="tag">{i}</span>
+                                                                        <span key={i} className="tag">{i}</span>
                                                                     )
                                                                 })}		
                                                             </p>
@@ -232,6 +132,8 @@ class Line extends Component {
                                                 </li>
                                             )
                                         })
+                                        :
+                                        <></>
                                         
                                     }
                                     
@@ -265,7 +167,68 @@ class Line extends Component {
                         </li>
                     </ul>
                 </footer>
-                
+                <div className="dialog-box">
+                    <div className="show-dialog-3 js_show_modal" id="show-dialog-3">
+                        <div className="gallery"></div>
+                        <div className="show-dialog-bd-3">
+                            <ul>
+                                <li className="ui-border-b active" id onClick={async ()=>{
+                                    let data = await axios.get('http://127.0.0.1:3001/line/init')
+                                    this.setState({
+                                        listdata:data.data
+                                    })
+                                }}>
+                                    <span>推荐排序</span>
+                                    <i className="icon-check"></i>
+                                </li>
+                                <li className="ui-border-b" id="1" onClick={async ()=>{
+                                    let data = await axios.get('http://127.0.0.1:3001/line/numsort')
+                                    this.setState({
+                                        listdata:data.data
+                                    }) 
+                                }}>
+                                    <span>销量从高到低</span>
+                                    <i className="icon-check"></i>
+                                </li>
+                                <li className="ui-border-b" id="2" onClick={async ()=>{
+                                    let data = await axios.get('http://127.0.0.1:3001/line/satsort')
+                                    this.setState({
+                                        listdata:data.data
+                                    }) 
+                                }}>
+                                    <span>满意度最高</span>
+                                    <i className="icon-check"></i>
+                                </li>
+                                <li className="ui-border-b" id="3" onClick={async ()=>{
+                                    let data = await axios.get('http://127.0.0.1:3001/line/pricesort',{
+                                        params:{
+                                            type:'desc'
+                                        }
+                                    })
+                                    this.setState({
+                                        listdata:data.data
+                                    }) 
+                                }}> 
+                                    <span>价格从高到低</span>
+                                    <i className="icon-check"></i>
+                                </li>
+                                <li className="ui-border-b" id="4" onClick={async ()=>{
+                                    let data = await axios.get('http://127.0.0.1:3001/line/pricesort',{
+                                        params:{
+                                            type:'asc'
+                                        }
+                                    })
+                                    this.setState({
+                                        listdata:data.data
+                                    }) 
+                                }}>
+                                    <span>价格从低到高</span>
+                                    <i className="icon-check"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             
         )

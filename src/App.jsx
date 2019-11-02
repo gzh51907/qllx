@@ -10,6 +10,7 @@ import Discover from './pages/Discover/Discover.jsx'
 import Mine from './pages/Mine/Mine.jsx'
 import Line from './pages/Line/Line.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
+import Commit from './pages/Discover/Commit.jsx'
 @withRouter
 class App extends React.Component {
     componentDidMount(){
@@ -58,9 +59,9 @@ class App extends React.Component {
         //隐藏公共组件
 
         return (
-            <div>
+            <div id="app2">
                 {
-                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 ?
+                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 && path.indexOf('/commit') == -1?
                         //不用隐藏
                         <div>
                             <div className="foot">
@@ -101,6 +102,7 @@ class App extends React.Component {
                     {/* <Route path='/discover/videodetail' component={Videodetail}/> */}
                     <Route path="/line" component={Line} />
                     <Route path='/discover/videodetail/:id' component={Videodetail} />
+                    <Route path='/discover/commit/:id' component={Commit} />
                     <Redirect from='/' to="home" exact />
                     <Route render={() => <div><h1>404</h1>页面不存在</div>} />
                 </Switch>
