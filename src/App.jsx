@@ -7,14 +7,27 @@ import './App.css'
 // import Destination from './pages/destination'
 // import Message from './pages/message'
 // import Discover from './pages/discover'
-// import Mine from './pages/mine'
+import Login from '~/Login/Login.jsx';
+import Reg from '~/Reg/Reg.jsx';
+import Mine from '~/Mine/Mine.jsx';
+// import store from '@/store';
+import {connect} from 'react-redux';
 
+// 用户获取state数据
+const mapStateToProps =(state)=>{
+  // state：store下的state，等效于store.getState()
+  console.log('state',state)
+  return {
+      username:state.username
+  };
+}
+@connect(mapStateToProps)
 class App extends React.Component {
   constructor() {
     super();
   }
   render() {
-
+    console.log('App的props',this.props);
     return (
       <div>
         <div className="footer" >
@@ -54,10 +67,10 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route path="/home" component={Home} />
-          {/* <Route path="/discover" component={Discover} />
+          <Route path="/login" component={Login} />
+          <Route path="/reg" component={Reg} />
           <Route path="/mine" component={Mine} />
-          <Route path="/destination" component={Destination} />
-          <Route path="/message" component={Message} /> */}
+          {/* <Route path="/message" component={Message} /> */}
           <Redirect from='/' to="home" exact />
           <Route render={() => <div><h1>404</h1>页面不存在</div>} />
         </Switch>
@@ -67,4 +80,7 @@ class App extends React.Component {
   }
 }
 
+
+
+// App = connect(mapStateToProps)(App)
 export default App;
