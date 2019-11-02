@@ -3,6 +3,7 @@ import { Carousel } from 'antd';
 import { withRouter, Route } from 'react-router-dom'
 import axios from 'axios'
 import './Discover.scss'
+import $ from 'jquery'
 import {connect} from 'react-redux';
 // const { Header, Footer, Content } = Layout;
 const mapStateToProps =(dispatch)=>{
@@ -30,8 +31,60 @@ class Discover extends Component {
             remendata,
             tuijian
         })
+        {
+            // 一开始没有滚动的时候，出现在视窗中的图片也会加载
+            start();
+
+            // 当页面开始滚动的时候，遍历图片，如果图片出现在视窗中，就加载图片
+            var clock; //函数节流
+            $(window).on('scroll',function(){
+                if(clock){
+                    clearTimeout(clock);
+                }
+                clock = setTimeout(function(){
+                    start()
+                },200)
+            })
+            
+            function start(){
+                $('.show img').not('[data-isLoading]').each(function () {
+                    if (isShow($(this))) {
+                        loadImg($(this));
+                    }
+                })
+            }
 
 
+            // 判断图片是否出现在视窗的函数
+            function isShow($node){
+                return $node.offset().top <= $(window).height()+$(window).scrollTop();
+            }
+
+            // 加载图片的函数，就是把自定义属性data-src 存储的真正的图片地址，赋值给src
+            function loadImg($img){
+                    $img.attr('src', $img.attr('data-src'));
+
+                    // 已经加载的图片，我给它设置一个属性，值为1，作为标识
+                    // 弄这个的初衷是因为，每次滚动的时候，所有的图片都会遍历一遍，这样有点浪费，所以做个标识，滚动的时候只遍历哪些还没有加载的图片
+                    $img.attr('data-isLoading',1);
+            }
+
+        }
+    
+
+    }
+
+    shouldComponentUpdate(){
+        let {username,history} = this.props;
+
+        // console.log('kankanusername，看',username[0])
+        console.log('kankanusername，看',username[0])
+        if( username[0] == undefined){
+            history.push('/login')
+        }else{
+           return true;
+        }
+        
     }
     render() {
         console.log(this.props)
@@ -69,8 +122,10 @@ class Discover extends Component {
                             {
                                 banner.map(item => {
                                     return (
-                                        <div>
-                                            <a className="swiper-slide" href={item.ProductLink} >
+                                        <div key={item.VideoID}>
+                                            <a className="swiper-slide" onClick={() => {
+                                            history.push(`/discover/videodetail/${item.VideoID}`)
+                                        }} >
                                                 <img src={item.PicLink} alt="" />
                                                 <b className="v-ico ico-play-big"></b>
                                                 <p style={{ margin: 0 }}><span>{item.Name}</span></p>
@@ -92,7 +147,7 @@ class Discover extends Component {
                         {
                             remendata.map(item=>{
                                 return (
-                                    <li>
+                                    <li key={item.VideoID}>
                                         <a onClick={() => {
                                             history.push(`/discover/videodetail/${item.VideoID}`)
                                             // history.push({pathname:'/discover/videodetail',query:{name:'jack',age:18}})
@@ -114,9 +169,11 @@ class Discover extends Component {
                         {
                             tuijian.map(item=>{
                                 return (
-                                    <li className="show">
-                                        <a href={item.ProductLink}>
-                                            <img src={item.PicLink} alt="" />
+                                    <li className="show" key={item.VideoID}>
+                                        <a onClick={() => {
+                                            history.push(`/discover/videodetail/${item.VideoID}`)
+                                        }}>
+                                            <img src="" data-src={item.PicLink} alt="" />
                                             <b className="v-ico ico-play-big"></b>
                                             <p><span>{item.Name}</span><i className="time">{item.VideoPlayTime}</i></p>
                                         </a>

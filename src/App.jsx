@@ -14,6 +14,7 @@ import Reg from './pages/Reg/Reg.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
 import LineInfor from './pages/LineInfor/LineInfor.jsx'
 import LineDetail from './pages/LineDetail/LineDetail.jsx';
+import Commit from './pages/Discover/Commit.jsx'
 import {connect} from 'react-redux';
 
 // 用户获取state数据
@@ -74,9 +75,9 @@ class App extends React.Component {
         //隐藏公共组件
 
         return (
-            <div>
+            <div id="app2">
                 {
-                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 && path.indexOf('/login') == -1 && path.indexOf('/reg')?
+                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 && path.indexOf('/login') == -1 && path.indexOf('/reg') && path.indexOf('/commit') == -1?
                         //不用隐藏
                         <div>
                             <div className="foot">
@@ -121,6 +122,7 @@ class App extends React.Component {
                     <Route path='/linedetail/:name' component={LineDetail}></Route>
                     <Route path='/Lineinfor' component={LineInfor}></Route>
                     <Route path='/discover/videodetail/:id' component={Videodetail} />
+                    <Route path='/discover/commit/:id' component={Commit} />
                     <Redirect from='/' to="home" exact />
                     <Route render={() => <div><h1>404</h1>页面不存在</div>} />
                 </Switch>

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios'
-import './Videodetail.scss'
+import axios from 'axios';
+import './Videodetail.scss';
+import $ from 'jquery';
 @withRouter
 class Videodetail extends Component {
-	async componentDidMount() {
-
+	async componentWillReceiveProps(nextProps){
+        
+		let id = nextProps.match.params.id
+		//init
 		let res = await axios.get('http://49.232.154.155:2003/discover/detail', {
 			params: {
-				id: this.props.match.params.id
+				id: id
 			}
 		})
 
@@ -16,13 +19,57 @@ class Videodetail extends Component {
 			data: res.data[0].Data,
 			tuijiandata: res.data[0].Data.VideoConfigDetail
 		})
+
+	}
+	async componentDidMount() {
+		let id = this.props.match.params.id
+		//init
+		let res = await axios.get('http://49.232.154.155:2003/discover/detail', {
+			params: {
+				id: id
+			}
+		})
+
+		this.setState({
+			data: res.data[0].Data,
+			tuijiandata: res.data[0].Data.VideoConfigDetail
+		})
+
+		{
+			(function () {
+				// $('.number .ico-zan').on('click',function(){
+				// 	console.log($('.zannum'))
+				// })
+				$('.zanul').on('click', '.number .ico-zan', async function (e) {
+					if ($(this).attr('class').indexOf('already') != -1) {
+						alert('你已经点过赞了');
+					} else {
+						let num = $(this).next().text();
+						$(this).next().text(num * 1 + 1);
+						$(this).addClass('already')
+						console.log($(this).attr('class'))
+						$(this).css({ 'background': 'url(../../asset/discoverImg/zan2.png) no-repeat', 'background-size': '.36rem .36rem' })
+						console.log($(this).parent().parent().parent().index())
+						let res = await axios.patch('http://127.0.0.1:3001/discover/createzan', {
+							id,
+							idx: $(this).parent().parent().parent().index(),
+							num: num * 1 + 1
+						})
+					}
+
+
+				})
+			})()
+		}
+
 	}
 	state = {
 		data: {},
 		tuijiandata: []//推荐数据
 	}
 	render() {
-		let { history } = this.props
+
+		let { history, match } = this.props
 		let { data, tuijiandata } = this.state
 		return (
 			<div id='videodetail'>
@@ -113,7 +160,7 @@ class Videodetail extends Component {
 								</div>
 							</a></li>
 
-							<li className="last"><a onClick={()=>{
+							<li className="last"><a onClick={() => {
 								history.push('/line')
 							}}>更多推荐</a></li></ul>
 
@@ -123,50 +170,52 @@ class Videodetail extends Component {
 						<div className="c-item top">
 							{
 								data.CommentList ?
-								<div>
-								<h4>评论(<i>{data.CommentList.length}</i>)</h4>
-								<p>
-								<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
-								<a className="right" >已有<i>{data.CommentList.length}</i>条评论,快来评论吧.......</a>
-								</p>
-								</div>
-								:
-								<div>
-								<h4>评论(<i>(0)</i>)</h4>
-								<p>
-								<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
-								<a className="right" >已有<i>(0)</i>条评论,快来评论吧.......</a>
-								</p>
-								</div>
+									<div>
+										<h4>评论(<i>{data.CommentList.length}</i>)</h4>
+										<p>
+											<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
+											<a className="right" onClick={() => {
+												history.push(`/discover/commit/${match.params.id}`)
+											}} >已有<i>{data.CommentList.length}</i>条评论,快来评论吧.......</a>
+										</p>
+									</div>
+									:
+									<div>
+										<h4>评论(<i>(0)</i>)</h4>
+										<p>
+											<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
+											<a className="right" >已有<i>(0)</i>条评论,快来评论吧.......</a>
+										</p>
+									</div>
 							}
-							
+
 						</div>
-						<ul>
+						<ul className="zanul">
 							{
 								data.CommentList ?
 
-								data.CommentList.map(item=>{
-									return(
-										<li className="c-item" userisclicked="">
-											<p className="left"><img src="../../asset/discoverImg/aa.jpg" alt="" /></p>
-											<div className="right">
-												<p className="name">{item.NickName}</p>
-												<p className="time">发表于<span>{item.CreatedOn}</span></p>
-												<p className="number">
+									data.CommentList.map(item => {
+										return (
+											<li className="c-item" userisclicked="" key={item.CreatedOn}>
+												<p className="left"><img src="../../asset/discoverImg/aa.jpg" alt="" /></p>
+												<div className="right">
+													<p className="name">{item.NickName}</p>
+													<p className="time">发表于<span>{item.CreatedOn}</span></p>
+													<p className="number">
 
-													<b className="v-ico ico-zan"></b>
+														<b className="v-ico ico-zan"></b>
 
-													<span>{item.ClickALike}</span>
-												</p>
-												<p className="text">{item.Desc}</p>
-											</div>
-										</li>
-									)
-								})
-								:
-								<></>
+														<span className="zannum">{item.ClickALike}</span>
+													</p>
+													<p className="text">{item.Desc}</p>
+												</div>
+											</li>
+										)
+									})
+									:
+									<></>
 							}
-							
+
 						</ul>
 						<p className="more">更多评论</p>
 					</section>
@@ -177,8 +226,10 @@ class Videodetail extends Component {
 							{
 								tuijiandata.map(item => {
 									return (
-										<li>
-											<a >
+										<li key={item.ID}>
+											<a onClick={() => {
+                                            history.push(`/discover/videodetail/${item.ID}`)
+                                        }}>
 												<img src={item.PicLink} alt="" />
 												<span>{item.VideoPlayTime}</span>
 											</a>
@@ -187,10 +238,10 @@ class Videodetail extends Component {
 									)
 								})
 							}
-
+							
 						</ul>
 					</section>
-					
+
 				</section>
 			</div>
 		)
