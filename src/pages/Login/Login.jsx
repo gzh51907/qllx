@@ -7,12 +7,14 @@ import axios from 'axios'
 import store from '@/store';
 import {connect} from 'react-redux';
 import './Login.scss';
+import {withRouter} from 'react-router-dom'
 const { Header, Footer, Content } = Layout;
 const mapStateToProps =(dispatch)=>{
     return dispatch
 
 }
 @connect(mapStateToProps)
+@withRouter
 // store.subscribe(()=>{
 //     console.log('subscribe:',store.getState())
 // })
@@ -29,7 +31,8 @@ class Login extends Component {
     }
 
     goto = (path)=>{
-        let {history} = this.props;
+        let {history,match} = this.props;
+        
         history.push(path)
     }
      handleSubmit =  (dispatch,e) =>{
@@ -62,7 +65,7 @@ class Login extends Component {
                         })
                         // let state = store.getState();
                         // console.log('state:',state);
-                    this.goto('/mine')
+                    this.props.history.go(-1)
                     alert("success");
                 }
 
