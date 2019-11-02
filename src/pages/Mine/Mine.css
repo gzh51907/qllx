@@ -1,8 +1,8 @@
-ul li {
+.mine ul li {
   list-style: none;
 }
 
-.top {
+.mine .top {
   background-image: url(https://m.qulv.com/mine/skin/images/header-bg.png);
   background-position: center;
   height: 110px;
@@ -10,7 +10,7 @@ ul li {
   position: relative;
 }
 
-.top .touxiang {
+.mine .top .touxiang {
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -21,60 +21,60 @@ ul li {
   width: 50px;
 }
 
-.top .dlzc {
+.mine .top .dlzc {
   display: inline-block;
   position: absolute;
   left: 36%;
   bottom: -4px;
 }
 
-.top .dlzc .dlbtn {
+.mine .top .dlzc .dlbtn {
   color: #fff;
 }
 
-.top .dlzc .zcbtn {
+.mine .top .dlzc .zcbtn {
   color: #fff;
 }
 
-.dingdan {
+.mine .dingdan {
   margin-bottom: 10px;
   height: 115px;
   background: #fff;
 }
 
-.dingdan h2 {
+.mine .dingdan h2 {
   height: 44px;
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 0;
 }
 
-.dingdan h2 span {
+.mine .dingdan h2 span {
   color: #333333;
   font-size: 15px;
   line-height: 44px;
   margin-left: 15px;
 }
 
-.dingdan h2 .ddbtn {
+.mine .dingdan h2 .ddbtn {
   color: #777;
   float: right;
   font-size: 12px;
   line-height: 44px;
 }
 
-.dingdan h2 .ddbtn span {
+.mine .dingdan h2 .ddbtn span {
   color: #777;
   font-size: 12px;
   line-height: 44px;
 }
 
-.dingdan .ddul {
+.mine .dingdan .ddul {
   padding: 15px 0;
   line-height: 1.2;
   display: flex;
 }
 
-.dingdan .ddul li {
+.mine .dingdan .ddul li {
   list-style: none;
   flex: 1;
   position: relative;
@@ -82,7 +82,7 @@ ul li {
   text-align: center;
 }
 
-.dingdan .ddul li .icon {
+.mine .dingdan .ddul li .icon {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -90,66 +90,66 @@ ul li {
   background-size: 24px 432px;
 }
 
-.dingdan .ddul li .icon-toconfirmed {
+.mine .dingdan .ddul li .icon-toconfirmed {
   background-position: 0 -72px;
 }
 
-.dingdan .ddul li .icon-topay {
+.mine .dingdan .ddul li .icon-topay {
   background-position: 0 -96px;
 }
 
-.dingdan .ddul li .icon-totravel {
+.mine .dingdan .ddul li .icon-totravel {
   background-position: 0 -120px;
 }
 
-.dingdan .ddul li .icon-toevaluate {
+.mine .dingdan .ddul li .icon-toevaluate {
   background-position: 0 -144px;
 }
 
-.dingdan .ddul li div {
+.mine .dingdan .ddul li div {
   font-size: 12px;
   color: #333333;
 }
 
-.zichang {
+.mine .zichang {
   margin-bottom: 10px;
   height: 115px;
   background: #fff;
 }
 
-.zichang h2 {
+.mine .zichang h2 {
   height: 44px;
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 0;
 }
 
-.zichang h2 span {
+.mine .zichang h2 span {
   color: #333333;
   font-size: 15px;
   line-height: 44px;
   margin-left: 15px;
 }
 
-.zichang h2 .ddbtn {
+.mine .zichang h2 .ddbtn {
   color: #777;
   float: right;
   font-size: 12px;
   line-height: 44px;
 }
 
-.zichang h2 .ddbtn span {
+.mine .zichang h2 .ddbtn span {
   color: #777;
   font-size: 12px;
   line-height: 44px;
 }
 
-.zichang .ddul {
+.mine .zichang .ddul {
   padding: 15px 0;
   line-height: 1.2;
   display: flex;
 }
 
-.zichang .ddul li {
+.mine .zichang .ddul li {
   flex: 1;
   position: relative;
   width: 100%;
@@ -160,7 +160,7 @@ ul li {
   margin-bottom: 5px;
 }
 
-.zichang .ddul li .icon {
+.mine .zichang .ddul li .icon {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -168,29 +168,29 @@ ul li {
   background-size: 24px 432px;
 }
 
-.zichang .ddul li .icon-toconfirmed {
+.mine .zichang .ddul li .icon-toconfirmed {
   background-position: 0 -72px;
 }
 
-.zichang .ddul li .icon-topay {
+.mine .zichang .ddul li .icon-topay {
   background-position: 0 -96px;
 }
 
-.zichang .ddul li .icon-totravel {
+.mine .zichang .ddul li .icon-totravel {
   background-position: 0 -120px;
 }
 
-.zichang .ddul li .icon-toevaluate {
+.mine .zichang .ddul li .icon-toevaluate {
   background-position: 0 -144px;
 }
 
-.zichang .ddul li div {
+.mine .zichang .ddul li div {
   color: #333333;
   font-size: 12px;
   margin-top: 4px;
 }
 
-.ui-nav {
+.mine .ui-nav {
   text-align: center;
   background: #ffffff;
   display: flex;
@@ -198,20 +198,20 @@ ul li {
   margin-bottom: 0;
 }
 
-.ui-nav li {
+.mine .ui-nav li {
   padding: 10px 0;
   flex: 1;
   border-bottom: 1px solid #eeeeee;
   border-left: 1px solid #eeeeee;
 }
 
-.ui-nav li a {
+.mine .ui-nav li a {
   display: inline-block;
   height: 100%;
   text-align: center;
 }
 
-.ui-nav li a .icon {
+.mine .ui-nav li a .icon {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -219,36 +219,36 @@ ul li {
   background-size: 24px 432px;
 }
 
-.ui-nav li a .icon-notice {
+.mine .ui-nav li a .icon-notice {
   background-position: 0 -168px;
 }
 
-.ui-nav li a .icon-housekeeper {
+.mine .ui-nav li a .icon-housekeeper {
   background-position: 0 -192px;
 }
 
-.ui-nav li a .icon-service-online {
+.mine .ui-nav li a .icon-service-online {
   background-position: 0 -312px;
 }
 
-.ui-nav li a .icon-service-tel {
+.mine .ui-nav li a .icon-service-tel {
   background-position: 0 -336px;
 }
 
-.ui-nav li a .icon-attention {
+.mine .ui-nav li a .icon-attention {
   background-position: 0 -240px;
 }
 
-.ui-nav li a .icon-history {
+.mine .ui-nav li a .icon-history {
   background-position: 0 -264px;
 }
 
-.ui-nav li a div {
+.mine .ui-nav li a div {
   font-size: 12px;
   color: #666666;
 }
 
-.logout {
+.mine .logout {
   height: 44px;
   background: #fff;
   text-align: center;
@@ -258,14 +258,14 @@ ul li {
   line-height: 44px;
 }
 
-.recommend {
+.mine .recommend {
   line-height: 44px;
   text-align: center;
   display: block;
   position: relative;
 }
 
-.recommend .icon {
+.mine .recommend .icon {
   position: relative;
   display: inline-block;
   width: 24px;
@@ -276,11 +276,11 @@ ul li {
   margin-top: 10px;
 }
 
-.recommend .icon-arrow-down {
+.mine .recommend .icon-arrow-down {
   background-position: 0 -360px;
 }
 
-.recommend::before {
+.mine .recommend::before {
   content: "";
   position: absolute;
   width: 13%;
@@ -290,7 +290,7 @@ ul li {
   left: 23%;
 }
 
-.recommend::after {
+.mine .recommend::after {
   content: "";
   position: absolute;
   width: 13%;

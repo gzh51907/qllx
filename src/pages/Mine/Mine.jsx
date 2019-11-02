@@ -6,7 +6,7 @@ import store from '@/store';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-    console.log('看看mapStateToProps',state.username)
+    console.log('看看mapStateToProps', state.username)
     return {
         username: state.username,
 
@@ -20,7 +20,7 @@ class Mine extends Component {
         name: [],
         piclink: [],
         username: '',
-        login:'login'
+        login: 'login'
         // 商品ID，商品名称和商品图片链接
     }
     async componentDidMount() {
@@ -49,27 +49,28 @@ class Mine extends Component {
         //      console.log('监听state:',state);
         // })
 
-
-
+      
     }
     goto = (path) => {
         let { history } = this.props;
         history.push(path)
     }
 
-    logout = () =>{
-        let {username} = this.props;
-        store.dispatch({type:'REMOVE_USERNAME',payload:{
-            username
-        }})
+    logout = () => {
+        let { username } = this.props;
+        store.dispatch({
+            type: 'REMOVE_USERNAME', payload: {
+                username
+            }
+        })
     }
     render() {
-        console.log('看看render的props', this.props)
+        // console.log('看看render的props', this.props)
         let { username, history } = this.props;
         let { productid, name, piclink, category } = this.state;
         // console.log('看看render的props', this.state)
         return (
-            <div style={{ background: '#eeeeee' }}>
+            <div className='mine' style={{ background: '#eeeeee' }}>
                 <div className="top">
                     <img src="https://m.qulv.com/mine/skin/images/demo/user.png" alt="" className="touxiang" />
                     {
@@ -203,25 +204,21 @@ class Mine extends Component {
                     </ul>
                 </div>
 
-                    {
-                        username ? <div className="logout" onClick={this.logout}>
+                {
+                    username ? <div className="logout" onClick={this.logout}>
                         退出当前账号
                     </div> : ''
-                    }
-                
-
+                }
                 <p className="recommend">
                     <i className="icon icon-arrow-down"></i>
                     <span>为你推荐</span>
                 </p>
-
                 <div style={{ padding: '5px' }}>
                     <ul style={{ background: '#fff', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%' }}>
                         {
                             category ?
-
-                                category.map(item => {
-                                    return <li style={{
+                                category.map((item,index) => {
+                                    return <li key={index} style={{
                                         flex: '1', width: '50%', minwidth: '50%',
                                         maxWidth: '50%', display: 'inline-block',
                                         // marginRight:'10px'
@@ -233,9 +230,8 @@ class Mine extends Component {
                                             verticalAlign: 'top',
                                             display: 'inline-block'
                                         }} />
-                                        <h4 style={{ maxHeight: '32px', height: '32px', overflow: 'hidden', fontSize: '13px', textOverflow: 'ellipsis', lineHeight: '1.2', margin: '8px' }}>{item.Name}</h4>
+                                        <h4 style={{ maxHeight: '32px', height: '32px', overflow: 'hidden', fontSize: '13px', textOverflow: 'ellipsis', lineHeight: '1.2', margin: '8px'}}>{item.Name}</h4>
                                     </li>
-
                                 })
                                 :
                                 <></>
@@ -244,7 +240,6 @@ class Mine extends Component {
 
                 </div>
             </div>
-
         )
     }
 }

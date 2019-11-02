@@ -1,7 +1,13 @@
 
+
 .bg{
     background-image: url(https://m.qulv.com/Content/Route/img/bg1.jpg);
+    background-size: 100%;
     background-position: center;
+    .ant-layout{
+        height: 100%;
+        background: none;
+    }
 }
 .ant-page-header-heading-sub-title {
 

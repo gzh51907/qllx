@@ -6,6 +6,7 @@ import Api from '../../Api';
 import axios from 'axios'
 import store from '@/store';
 import {connect} from 'react-redux';
+import './Login.scss';
 const { Header, Footer, Content } = Layout;
 const mapStateToProps =(dispatch)=>{
     return dispatch
@@ -68,17 +69,20 @@ class Login extends Component {
             }
         })
     }
-
+    componentDidMount (){
+        let Login_cont = document.getElementById('Login_cont');
+    
+        Login_cont.style.height = window.innerHeight + 'px';
+        console.log(Login_cont)
+    }
     render() {
         // console.log('1',this.props)
-        let {dispatch}  = this.props;
+        let {dispatch,history}  = this.props;
         // console.log(this.props)
         const { getFieldDecorator } = this.props.form;
         // <WrappedNormalLoginForm />
         return (
-            <div style={{
-                background : 'url(./bg1.jpg)'
-            }}>
+            <div id='Login_cont'>
 
                 <Layout>
 
@@ -86,7 +90,7 @@ class Login extends Component {
                         style={{
                             border: '1px solid rgb(235, 237, 240)',
                         }}
-                        onBack={() => null}
+                        onBack={() => history.go(-1)}
                         title=""
                         subTitle="登录"
                     />
@@ -99,7 +103,7 @@ class Login extends Component {
                                 })(
                                     <Input
                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Username"
+                                    placeholder="Username" size='large'
                                 />,
                                 )}
                                 

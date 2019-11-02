@@ -1,270 +1,274 @@
-ul li {
-    list-style: none;
-}
-.top{
-    background-image: url(https://m.qulv.com/mine/skin/images/header-bg.png);
-    background-position: center;
-    height: 110px;
-    width: 100%;
-    position: relative;
-    // background: #fff;
-    .touxiang{
-        display: inline-block;
-        position: absolute;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-    }
-    .dlzc{
-        display: inline-block;
-        position: absolute;
-        // top:50%;
-        left:36%;
-        bottom: -4px;
-        // transform:translate(-50%,-50%);
+.mine{
 
-        .dlbtn{
-            color: #fff;
-        }
-        .zcbtn{
-            color: #fff;
-
-        }
+    ul li {
+        list-style: none;
     }
-    
-}
-.dingdan{
-    margin-bottom: 10px;
-    height: 115px;
-    // margin-left: 15px;
-    background: #fff;
-    h2{
-        height: 44px;
-        border-bottom: 1px solid #eeeeee;
-        margin-bottom: 0;
-        span{
-            color: #333333;
-            font-size: 15px;
-            line-height: 44px;
-            margin-left: 15px;
-        }
-        .ddbtn{
-            color: #777;
-            float: right;
-            font-size: 12px;
-            line-height: 44px;
-            span{
-                color: #777;
-                font-size: 12px;
-                line-height: 44px;
-            }
-        }
-    }
-    .ddul{
-        padding: 15px 0;
-        line-height: 1.2;
-        display: flex;
-        li{
-            list-style: none;
-            flex: 1;
-            position: relative;
-            width: 100%;
-            text-align: center;
-            .icon{
-                // position: absolute;
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
-                background-size: 24px 432px;
-                
-            }
-            .icon-toconfirmed {
-                background-position: 0 -72px;
-            }
-            .icon-topay {
-                background-position: 0 -96px;
-            }
-            .icon-totravel {
-                background-position: 0 -120px;
-            }
-            .icon-toevaluate {
-                background-position: 0 -144px;
-            }
-            div{
-                font-size: 12px;
-                color: #333333;
-            }
-        }
-    }
-    
-}
-.zichang{
-    margin-bottom: 10px;
-    height: 115px;
-    background: #fff;
-    h2{
-        height: 44px;
-        border-bottom: 1px solid #eeeeee;
-        margin-bottom: 0;
-        span{
-            color: #333333;
-            font-size: 15px;
-            line-height: 44px;
-            margin-left: 15px;
-        }
-        .ddbtn{
-            color: #777;
-            float: right;
-            font-size: 12px;
-            line-height: 44px;
-            span{
-                color: #777;
-                font-size: 12px;
-                line-height: 44px;
-            }
-        }
-    }
-    .ddul{
-        padding: 15px 0;
-        line-height: 1.2;
-        display: flex;
-        li{
-            flex: 1;
-            position: relative;
-            width: 100%;
-            text-align: center;
-            display: inline-block;
-            font-size: 15px;
-            color: #666666;
-            margin-bottom: 5px;
-            .icon{
-                // position: absolute;
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
-                background-size: 24px 432px;
-                
-            }
-            .icon-toconfirmed {
-                background-position: 0 -72px;
-            }
-            .icon-topay {
-                background-position: 0 -96px;
-            }
-            .icon-totravel {
-                background-position: 0 -120px;
-            }
-            .icon-toevaluate {
-                background-position: 0 -144px;
-            }
-            div{
-                color: #333333;
-                font-size: 12px;
-                margin-top: 4px;
-            }
-        }
-    }
-}
-.ui-nav {
-    text-align: center;
-    background: #ffffff;
-    display: flex;
-    width: 100%;
-    margin-bottom: 0;
-    li{
-        padding: 10px 0;
-        flex: 1;
-        border-bottom: 1px solid #eeeeee;
-        border-left: 1px solid #eeeeee;
-        a {
-            display: inline-block;
-            height: 100%;
-            text-align: center;
-            .icon{
-                // position: absolute;
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
-                background-size: 24px 432px;
-            }
-            .icon-notice {
-                background-position: 0 -168px;
-            }
-            .icon-housekeeper {
-                background-position: 0 -192px;
-            }
-            .icon-service-online {
-                background-position: 0 -312px;
-            }
-            .icon-service-tel {
-                background-position: 0 -336px;
-            }
-            .icon-attention {
-                background-position: 0 -240px;
-            }
-            .icon-history {
-                background-position: 0 -264px;
-            }
-            div{
-                font-size: 12px;
-                color: #666666;
-            }
-        }
-    }
-}
-
-.logout{
-    height: 44px;
-    background: #fff;
-    text-align: center;
-    font-size: 12px;
-    margin-top: 10px;
-    color: #666666;
-    line-height: 44px;
-}
-
-.recommend{
-    line-height: 44px;
-    text-align: center;
-    display: block;
-    position: relative;
-    .icon {
+    .top{
+        background-image: url(https://m.qulv.com/mine/skin/images/header-bg.png);
+        background-position: center;
+        height: 110px;
+        width: 100%;
         position: relative;
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
-        background-size: 24px 432px;
-        vertical-align: top;
+        // background: #fff;
+        .touxiang{
+            display: inline-block;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+        .dlzc{
+            display: inline-block;
+            position: absolute;
+            // top:50%;
+            left:36%;
+            bottom: -4px;
+            // transform:translate(-50%,-50%);
+    
+            .dlbtn{
+                color: #fff;
+            }
+            .zcbtn{
+                color: #fff;
+    
+            }
+        }
+        
+    }
+    .dingdan{
+        margin-bottom: 10px;
+        height: 115px;
+        // margin-left: 15px;
+        background: #fff;
+        h2{
+            height: 44px;
+            border-bottom: 1px solid #eeeeee;
+            margin-bottom: 0;
+            span{
+                color: #333333;
+                font-size: 15px;
+                line-height: 44px;
+                margin-left: 15px;
+            }
+            .ddbtn{
+                color: #777;
+                float: right;
+                font-size: 12px;
+                line-height: 44px;
+                span{
+                    color: #777;
+                    font-size: 12px;
+                    line-height: 44px;
+                }
+            }
+        }
+        .ddul{
+            padding: 15px 0;
+            line-height: 1.2;
+            display: flex;
+            li{
+                list-style: none;
+                flex: 1;
+                position: relative;
+                width: 100%;
+                text-align: center;
+                .icon{
+                    // position: absolute;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
+                    background-size: 24px 432px;
+                    
+                }
+                .icon-toconfirmed {
+                    background-position: 0 -72px;
+                }
+                .icon-topay {
+                    background-position: 0 -96px;
+                }
+                .icon-totravel {
+                    background-position: 0 -120px;
+                }
+                .icon-toevaluate {
+                    background-position: 0 -144px;
+                }
+                div{
+                    font-size: 12px;
+                    color: #333333;
+                }
+            }
+        }
+        
+    }
+    .zichang{
+        margin-bottom: 10px;
+        height: 115px;
+        background: #fff;
+        h2{
+            height: 44px;
+            border-bottom: 1px solid #eeeeee;
+            margin-bottom: 0;
+            
+            span{
+                color: #333333;
+                font-size: 15px;
+                line-height: 44px;
+                margin-left: 15px;
+            }
+            .ddbtn{
+                color: #777;
+                float: right;
+                font-size: 12px;
+                line-height: 44px;
+                span{
+                    color: #777;
+                    font-size: 12px;
+                    line-height: 44px;
+                }
+            }
+        }
+        .ddul{
+            padding: 15px 0;
+            line-height: 1.2;
+            display: flex;
+            li{
+                flex: 1;
+                position: relative;
+                width: 100%;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                color: #666666;
+                margin-bottom: 5px;
+                .icon{
+                    // position: absolute;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
+                    background-size: 24px 432px;
+                    
+                }
+                .icon-toconfirmed {
+                    background-position: 0 -72px;
+                }
+                .icon-topay {
+                    background-position: 0 -96px;
+                }
+                .icon-totravel {
+                    background-position: 0 -120px;
+                }
+                .icon-toevaluate {
+                    background-position: 0 -144px;
+                }
+                div{
+                    color: #333333;
+                    font-size: 12px;
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+    .ui-nav {
+        text-align: center;
+        background: #ffffff;
+        display: flex;
+        width: 100%;
+        margin-bottom: 0;
+        li{
+            padding: 10px 0;
+            flex: 1;
+            border-bottom: 1px solid #eeeeee;
+            border-left: 1px solid #eeeeee;
+            a {
+                display: inline-block;
+                height: 100%;
+                text-align: center;
+                .icon{
+                    // position: absolute;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
+                    background-size: 24px 432px;
+                }
+                .icon-notice {
+                    background-position: 0 -168px;
+                }
+                .icon-housekeeper {
+                    background-position: 0 -192px;
+                }
+                .icon-service-online {
+                    background-position: 0 -312px;
+                }
+                .icon-service-tel {
+                    background-position: 0 -336px;
+                }
+                .icon-attention {
+                    background-position: 0 -240px;
+                }
+                .icon-history {
+                    background-position: 0 -264px;
+                }
+                div{
+                    font-size: 12px;
+                    color: #666666;
+                }
+            }
+        }
+    }
+    
+    .logout{
+        height: 44px;
+        background: #fff;
+        text-align: center;
+        font-size: 12px;
         margin-top: 10px;
+        color: #666666;
+        line-height: 44px;
     }
-    .icon-arrow-down {
-        background-position: 0 -360px;
+    
+    .recommend{
+        line-height: 44px;
+        text-align: center;
+        display: block;
+        position: relative;
+        .icon {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(https://m.qulv.com/mine/skin/images/iconBg.png) no-repeat;
+            background-size: 24px 432px;
+            vertical-align: top;
+            margin-top: 10px;
+        }
+        .icon-arrow-down {
+            background-position: 0 -360px;
+        }
+       
+    
     }
-   
-
-}
-.recommend::before {
-    content: "";
-    position: absolute;
-    width: 13%;
-    height: 1px;
-    background: #666666;
-    top: 50%;
-    left: 23%;
-}
-.recommend::after {
-    content: "";
-    position: absolute;
-    width: 13%;
-    height: 1px;
-    background: #666666;
-    top: 50%;
-    right: 23%;
+    .recommend::before {
+        content: "";
+        position: absolute;
+        width: 13%;
+        height: 1px;
+        background: #666666;
+        top: 50%;
+        left: 23%;
+    }
+    .recommend::after {
+        content: "";
+        position: absolute;
+        width: 13%;
+        height: 1px;
+        background: #666666;
+        top: 50%;
+        right: 23%;
+    }
 }
