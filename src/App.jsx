@@ -9,8 +9,21 @@ import Trip from './pages/Trip/Trip.jsx'
 import Discover from './pages/Discover/Discover.jsx'
 import Mine from './pages/Mine/Mine.jsx'
 import Line from './pages/Line/Line.jsx'
+import Login from './pages/Login/Login.jsx'
+import Reg from './pages/Reg/Reg.jsx'
 import Videodetail from './pages/Discover/Videodetail.jsx'
 import Commit from './pages/Discover/Commit.jsx'
+import {connect} from 'react-redux';
+
+// 用户获取state数据
+const mapStateToProps =(state)=>{
+  // state：store下的state，等效于store.getState()
+  console.log('state',state)
+  return {
+      username:state.username
+  };
+}
+@connect(mapStateToProps)
 @withRouter
 class App extends React.Component {
     componentDidMount(){
@@ -61,7 +74,7 @@ class App extends React.Component {
         return (
             <div id="app2">
                 {
-                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 && path.indexOf('/commit') == -1?
+                    path.indexOf('/videodetail') == -1 && path.indexOf('/line') == -1 && path.indexOf('/login') == -1 && path.indexOf('/reg') && path.indexOf('/commit') == -1?
                         //不用隐藏
                         <div>
                             <div className="foot">
@@ -97,6 +110,8 @@ class App extends React.Component {
                     <Route path="/discover" component={Discover} exact />
                     <Route path="/mine" component={Mine} />
                     <Route path="/destination" component={Destination} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/reg" component={Reg} />
                     <Route path="/message" component={Message} />
                     <Route path='/trip' component={Trip}></Route>
                     {/* <Route path='/discover/videodetail' component={Videodetail}/> */}
@@ -112,4 +127,7 @@ class App extends React.Component {
     }
 }
 
+
+
+// App = connect(mapStateToProps)(App)
 export default App;

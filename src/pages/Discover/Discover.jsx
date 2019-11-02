@@ -4,6 +4,14 @@ import { withRouter, Route } from 'react-router-dom'
 import axios from 'axios'
 import './Discover.scss'
 import $ from 'jquery'
+import {connect} from 'react-redux';
+// const { Header, Footer, Content } = Layout;
+const mapStateToProps =(dispatch)=>{
+    return dispatch
+
+}
+@connect(mapStateToProps)
+
 @withRouter
 class Discover extends Component {
     state = {
@@ -62,9 +70,24 @@ class Discover extends Component {
             }
 
         }
+    
 
     }
+
+    shouldComponentUpdate(){
+        let {username,history} = this.props;
+
+        // console.log('kankanusername，看',username[0])
+        console.log('kankanusername，看',username[0])
+        if( username[0] == undefined){
+            history.push('/login')
+        }else{
+           return true;
+        }
+        
+    }
     render() {
+        console.log(this.props)
         let { history } = this.props
         let { banner, tuijian, remendata } = this.state
         return (
