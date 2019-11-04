@@ -48,7 +48,7 @@ class Videodetail extends Component {
 						$(this).next().text(num * 1 + 1);
 						$(this).addClass('already')
 						console.log($(this).attr('class'))
-						$(this).css({ 'background': 'url(../../asset/discoverImg/zan2.png) no-repeat', 'background-size': '.36rem .36rem' })
+						$(this).css({ 'background': 'url(./asset/discoverImg/zan2.png) no-repeat', 'background-size': '.36rem .36rem' })
 						console.log($(this).parent().parent().parent().index())
 						let res = await axios.patch('http://49.232.154.155:2003/discover/createzan', {
 							id,
@@ -173,7 +173,7 @@ class Videodetail extends Component {
 									<div>
 										<h4>评论(<i>{data.CommentList.length}</i>)</h4>
 										<p>
-											<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
+											<img src="./asset/discoverImg/icon-yonghu.png" alt="" />
 											<a className="right" onClick={() => {
 												history.push(`/discover/commit/${match.params.id}`)
 											}} >已有<i>{data.CommentList.length}</i>条评论,快来评论吧.......</a>
@@ -183,7 +183,7 @@ class Videodetail extends Component {
 									<div>
 										<h4>评论(<i>(0)</i>)</h4>
 										<p>
-											<img src="../../asset/discoverImg/icon-yonghu.png" alt="" />
+											<img src="./asset/discoverImg/icon-yonghu.png" alt="" />
 											<a className="right" >已有<i>(0)</i>条评论,快来评论吧.......</a>
 										</p>
 									</div>
@@ -197,7 +197,7 @@ class Videodetail extends Component {
 									data.CommentList.map(item => {
 										return (
 											<li className="c-item" userisclicked="" key={item.CreatedOn}>
-												<p className="left"><img src="../../asset/discoverImg/aa.jpg" alt="" /></p>
+												<p className="left"><img src="./asset/discoverImg/aa.jpg" alt="" /></p>
 												<div className="right">
 													<p className="name">{item.NickName}</p>
 													<p className="time">发表于<span>{item.CreatedOn}</span></p>
