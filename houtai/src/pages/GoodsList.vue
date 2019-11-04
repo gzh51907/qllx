@@ -117,8 +117,16 @@ export default {
     };
   },
   methods: {
-    handleClick(row) {
+    async handleClick(row) {
       if (confirm("确定删除该套餐")) {
+        let arr = [];
+        arr.push(row.Data.ID)
+        await this.$axios.delete('http://49.232.154.155:2003/trip/removeTrip',{
+        params:{
+          arr
+        }
+        
+      })
         this.tableData = this.tableData.filter(item => item != row);
       }
     },

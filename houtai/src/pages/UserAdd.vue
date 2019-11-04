@@ -51,7 +51,7 @@
   </div>
 </template>
 <script>
-import { async } from 'q';
+import { async } from "q";
 export default {
   data() {
     var Tel = (rule, value, callback) => {
@@ -77,19 +77,16 @@ export default {
       if (value === "") {
         callback(new Error("请输入用户名"));
       } else {
-          console.log(value)
-          let api = 'http://49.232.154.155:2999/user/check';
-          let {data} = await this.$axios.get(api,{
-            params:{username:value}
-          })
-          if(data.code == 1){
-            callback();
-          }else{
-            callback(new Error('用户名已存在'))
-          }
-              
-          
-        
+        console.log(value);
+        let api = "http://49.232.154.155:2003/user/check";
+        let { data } = await this.$axios.get(api, {
+          params: { username: value }
+        });
+        if (data.code == 1) {
+          callback();
+        } else {
+          callback(new Error("用户名已存在"));
+        }
       }
     };
     return {
@@ -109,14 +106,14 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
-          let {username,password} = this.ruleForm;
-          
-          let api = 'http://49.232.154.155:2999/user/reg';
-         let {data} =  await this.$axios.post(api,{username,password});
-         if(data.code == 1){
-           alert('添加成功');
-           this.resetForm(formName);
-         }
+          let { username, password } = this.ruleForm;
+
+          let api = "http://49.232.154.155:2003/user/reg";
+          let { data } = await this.$axios.post(api, { username, password });
+          if (data.code == 1) {
+            alert("添加成功");
+            this.resetForm(formName);
+          }
         } else {
           console.log("error submit!!");
           return false;

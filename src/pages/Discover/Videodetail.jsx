@@ -50,7 +50,7 @@ class Videodetail extends Component {
 						console.log($(this).attr('class'))
 						$(this).css({ 'background': 'url(../../asset/discoverImg/zan2.png) no-repeat', 'background-size': '.36rem .36rem' })
 						console.log($(this).parent().parent().parent().index())
-						let res = await axios.patch('http://127.0.0.1:3001/discover/createzan', {
+						let res = await axios.patch('http://49.232.154.155:2003/discover/createzan', {
 							id,
 							idx: $(this).parent().parent().parent().index(),
 							num: num * 1 + 1

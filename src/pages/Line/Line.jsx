@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 class Line extends Component {
     async componentDidMount(){
             //请求
-            let res = await axios.get('http://127.0.0.1:3001/line/init')
+            let res = await axios.get('http://49.232.154.155:2003/line/init')
             console.log('res',res)
             this.setState({
                 listdata:res.data
@@ -173,7 +173,7 @@ class Line extends Component {
                         <div className="show-dialog-bd-3">
                             <ul>
                                 <li className="ui-border-b active" id onClick={async ()=>{
-                                    let data = await axios.get('http://127.0.0.1:3001/line/init')
+                                    let data = await axios.get('http://49.232.154.155:2003/line/init')
                                     this.setState({
                                         listdata:data.data
                                     })
@@ -182,7 +182,7 @@ class Line extends Component {
                                     <i className="icon-check"></i>
                                 </li>
                                 <li className="ui-border-b" id="1" onClick={async ()=>{
-                                    let data = await axios.get('http://127.0.0.1:3001/line/numsort')
+                                    let data = await axios.get('http://49.232.154.155:2003/line/numsort')
                                     this.setState({
                                         listdata:data.data
                                     }) 
@@ -191,7 +191,7 @@ class Line extends Component {
                                     <i className="icon-check"></i>
                                 </li>
                                 <li className="ui-border-b" id="2" onClick={async ()=>{
-                                    let data = await axios.get('http://127.0.0.1:3001/line/satsort')
+                                    let data = await axios.get('http://49.232.154.155:2003/line/satsort')
                                     this.setState({
                                         listdata:data.data
                                     }) 
@@ -200,7 +200,7 @@ class Line extends Component {
                                     <i className="icon-check"></i>
                                 </li>
                                 <li className="ui-border-b" id="3" onClick={async ()=>{
-                                    let data = await axios.get('http://127.0.0.1:3001/line/pricesort',{
+                                    let data = await axios.get('http://49.232.154.155:2003/line/pricesort',{
                                         params:{
                                             type:'desc'
                                         }
@@ -213,7 +213,7 @@ class Line extends Component {
                                     <i className="icon-check"></i>
                                 </li>
                                 <li className="ui-border-b" id="4" onClick={async ()=>{
-                                    let data = await axios.get('http://127.0.0.1:3001/line/pricesort',{
+                                    let data = await axios.get('http://49.232.154.155:2003/line/pricesort',{
                                         params:{
                                             type:'asc'
                                         }

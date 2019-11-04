@@ -27,27 +27,36 @@
         >
           <el-form-item label="目的地名称" prop="CnName">
             <el-col :span="8">
-              <el-input v-model="ruleForm.goods_name" size></el-input>
+              <el-input v-model="ruleForm.CnName" size></el-input>
             </el-col>
           </el-form-item>
           <el-form-item label="旅游标题" prop="Name">
             <el-col :span="8">
-              <el-input v-model="ruleForm.subtitle" size></el-input>
+              <el-input v-model="ruleForm.Name" size></el-input>
             </el-col>
           </el-form-item>
           <el-form-item label="视频链接" prop="VideoLink">
             <el-col :span="8">
-              <el-input v-model="ruleForm.vipPrice" />
+              <el-input v-model="ruleForm.VideoLink" />
             </el-col>
           </el-form-item>
           <el-form-item label="上传图片" prop="PicLink">
             <el-col :span="8">
-              <el-input v-model="ruleForm.noVipPrice" />
+              <!-- <el-input v-model="ruleForm.PicLink" /> -->
+              <el-upload
+                class="avatar-uploader"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload">
+                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+              </el-upload>
             </el-col>
           </el-form-item>
           <el-form-item label="商品ID" prop="ID">
             <el-col :span="8">
-              <el-input v-model="ruleForm.sku" />
+              <el-input v-model="ruleForm.ID" />
             </el-col>
           </el-form-item>
           <!-- <el-form-item label="商品库存" prop="stock">
@@ -71,7 +80,7 @@
               <el-radio label="一元秒杀"></el-radio>
               <el-radio label="劲爆*限量"></el-radio>
             </el-radio-group>
-          </el-form-item> -->
+          </el-form-item>-->
 
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">立即添加</el-button>
@@ -86,11 +95,12 @@
 export default {
   data() {
     return {
+      imageUrl: '',
       ruleForm: {
         CnName: "",
         Name: "",
         VideoLink: "",
-        PicLink: ""
+        PicLink: "",
         // sku: "",
         // stock:'',
         // image: "",
@@ -109,7 +119,7 @@ export default {
         PicLink: [
           { required: true, message: "请输入图片链接", trigger: "blur" }
         ],
-        ID: [{ required: true, message: "请输入商品id", trigger: "blur" }],
+        ID: [{ required: true, message: "请输入商品id", trigger: "blur" }]
         // goods_tag: [{ required: true, message: "请选择标签", trigger: "blur" }],
         // stock:[{ required: true, message: "请输入商品库存", trigger: "blur" }],
         // image: [
@@ -123,10 +133,25 @@ export default {
     };
   },
   methods: {
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    },
     submitForm(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
-          let api = "http://49.232.154.155:2999/goods/listcreate";
+          let api = "http://49.232.154.155:2003/trip/addTrip";
           let {
             CnName,
             Name,
@@ -152,14 +177,15 @@ export default {
             VideoLink,
             PicLink,
             ID
-
           });
-         if(data.code==1){
-           alert('套餐添加成功');
-           this.resetForm(formName);
-         }else{
-           alert('添加失败')
-         }
+          //  if(data.code==1){
+          //    alert('套餐添加成功');
+          //    this.resetForm(formName);
+          //  }else{
+          //    console.log(data)
+          //    alert('添加失败')
+          //  }
+          alert("套餐添加成功");
         } else {
           console.log("error submit!!");
           return false;
@@ -169,15 +195,15 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     }
-  },
-  
+  }
 };
 </script>
 <style lang="scss" scoped>
 div {
   box-sizing: border-box;
 }
-.container { overflow: auto;
+.container {
+  overflow: auto;
   .header {
     height: 50px;
     padding: 10px;
@@ -191,7 +217,33 @@ div {
     //   height: 100%;
     // padding: 20px;
     overflow: auto;
-   
   }
 }
+.el-icon-plus{
+  border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+}
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
 </style>
