@@ -1,0 +1,6 @@
+{
+    "PORT": 3001,
+    "DBurl": "mongodb://49.232.154.155:27017",
+    "DBName": "qllx",
+    "secret": "haowei"
+}

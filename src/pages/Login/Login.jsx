@@ -122,6 +122,7 @@ class Login extends Component {
                                     <Input type="password"
                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Password"
+                                    size='large'
                                 />,
                                     )
                                 }
