@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-10-22 19:43:30
- * @LastEditTime: 2019-10-24 14:31:37
+ * @LastEditTime: 2019-11-04 18:58:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /c:\Users\九亿少女的梦\Desktop\千锋3阶段\My_three_step\W5-reactc:\Users\九亿少女的梦\Desktop\千锋3阶段\My_three_step\React-router\webpack.config.js
@@ -20,7 +20,7 @@ module.exports = {
     output:{
         path:path.join( __dirname,'./dist'),
         filename:'bundle-[name]-[hash:5].js',
-        // publicPath:'./'
+        publicPath:'./'
     },
 
     // 测试服务器（为了在开发环境中测试使用，编译打包后就没有服务器了）

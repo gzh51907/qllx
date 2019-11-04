@@ -10,43 +10,53 @@ class Home extends Component {
         navdata: [
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135118207_87.png',
-                name: '马尔代夫'
+                name: '马尔代夫',
+                href:"https://m.qulv.com/maldives/"
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135135004_105.png',
-                name: '毛里求斯'
+                name: '毛里求斯',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=4'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135304600_70.png0',
-                name: '斯里兰卡'
+                name: '斯里兰卡',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=17'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135235427_51.png',
-                name: '塞班'
+                name: '塞班',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=11'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-06/20170629093908502_37.png',
-                name: '巴厘岛'
+                name: '巴厘岛',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=3'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135318178_20.png',
-                name: "泰国"
+                name: "泰国",
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=44'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-12/20171215160459181_24.png',
-                name: '芽庄'
+                name: '芽庄',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=48'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135248084_85.png',
-                name: '沙巴'
+                name: '沙巴',
+                href:'https://m.qulv.com/isLand/isLandInfor.html?id=6'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2019/04/20190425154244600_15.png',
-                name: "疗养圣地"
+                name: "疗养圣地",
+                href:'https://m.qulv.com/special/limit.html'
             },
             {
                 imgUrl: 'https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135205333_17.png',
-                name: '全部海岛'
+                name: '全部海岛',
+                href:'https://m.qulv.com/isLand/'
             }
         ],
         limitList: [
@@ -335,11 +345,14 @@ class Home extends Component {
     }
     //顶部的显示隐藏
     closeTop = () => {
+        let fixTop = document.getElementsByClassName('fixedTop')[0];
+
         let toLogin = document.getElementsByClassName('toLogin')[0];
         let topHeader = document.getElementsByClassName('topheader')[0];
         let hdWrap = document.getElementsByClassName('hd-wrap')[0];
-        toLogin.style.display = 'none';
         topHeader.style.display = 'none';
+         fixTop.removeChild(toLogin);
+        // toLogin.style.display = 'none';
         hdWrap.classList.add('curr')
     }
     render() {
@@ -392,7 +405,7 @@ class Home extends Component {
                         {
                             navdata.map(item => {
                                 return (
-                                    <a>
+                                    <a href={item.href}>
                                         <img src={item.imgUrl} alt={item.name} lazy='y'></img>
                                         <p className='nav-name' >{item.name}</p>
                                     </a>
@@ -441,18 +454,18 @@ class Home extends Component {
                         </div>
                         <ul className='deal-list'>
                             <li>
-                                <a>
+                                <a href='https://m.qulv.com/topic/maldivesmade'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2019/02/20190213163316628_37.png'></img>
                                 </a>
                             </li>
                             <li>
-                                <a>
+                                <a href='https://m.qulv.com/topic/TheLsland/index.html'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2018/08/20180830165257171_57.png'></img>
                                 </a>
 
                             </li>
                             <li>
-                                <a>
+                                <a href='https://m.qulv.com/special/salesproduct.html'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-07/20170712151457774_10.png'></img>
                                 </a>
                             </li>
@@ -464,19 +477,19 @@ class Home extends Component {
                         </div>
                         <ul className='wonderful-list fn-clear'>
                             <li className='br bb'>
-                                <a>
+                                <a href='https://m.qulv.com/Local/Index'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135504056_97.png' alt='当地玩乐'></img>
                                     <p>当地玩乐</p>
                                 </a>
                             </li>
                             <li className='br bb'>
-                                <a>
+                                <a href='https://m.qulv.com/Wedding/Index'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135549479_58.png' alt='婚纱摄影'></img>
                                     <p>婚纱摄影</p>
                                 </a>
                             </li>
                             <li className='br bb'>
-                                <a>
+                                <a href='https://m.qulv.com/line/linemade2'>
                                     <img src='https://pic.qtour.com/Upload/QulvCom/MobileDetail/2017-05/20170502135519557_57.png' alt='定制游'></img>
                                     <p>定制游</p>
                                 </a>
