@@ -19,6 +19,11 @@ Router.get('/detail',async(req,res)=>{
     let result = await mongo.finddetail('videodetail',id);
     res.send(result)
 })
+Router.get('/detailall', async (req, res) => {
+
+    let result = await mongo.find('videodetail');
+    res.send(result)
+})
 //增加评论
 Router.post('/commitcreate', async (req, res) => {
     // let {list,goods_name,subtitle,vipPrice,noVipPrice,sku,image,goods_tag} = req.body;
