@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-10-16 10:07:01
- * @LastEditTime: 2019-11-04 15:54:46
+ * @LastEditTime: 2019-11-04 19:44:34
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -182,7 +182,7 @@ export default {
             type: "info",
             message: "保存修改"
           });
-          this.$axios.get('http://49.232.154.155:27017')
+          this.$axios.post('http://49.232.154.155:27017',this.Data)
         })
         .catch(action => {
           this.$message({
