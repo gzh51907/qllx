@@ -15,7 +15,7 @@ function reducer(state=initialState,{type,payload}){
             console.log(type,payload)
             return {
                 ...state,
-                username:[payload,...state.username]
+                username:payload
             }
         case 'REMOVE_USERNAME':
             return {

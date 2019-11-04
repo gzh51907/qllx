@@ -65,7 +65,7 @@ class Mine extends Component {
         })
     }
     render() {
-        // console.log('看看render的props', this.props)
+        // console.log('看看render的username', this.props.username.username)
         let { username, history } = this.props;
         let { productid, name, piclink, category } = this.state;
         // console.log('看看render的props', this.state)

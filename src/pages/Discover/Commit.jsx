@@ -3,9 +3,18 @@ import { withRouter } from 'react-router-dom';
 import './Commit.scss';
 import $ from 'jquery';
 import axios from 'axios'
+import {connect} from 'react-redux';
+const mapStateToProps =(dispatch)=>{
+    return dispatch
+
+}
+@connect(mapStateToProps)
 @withRouter
 class Commit extends Component {
     componentDidMount() {
+        this.setState({
+            update:2
+        })
         {
             (function () {
                 $('.write-comment-container textarea').on('input', function () {
@@ -34,12 +43,25 @@ class Commit extends Component {
             }
         }
     }
+    shouldComponentUpdate(){
+        let {username,history} = this.props;
+        // console.log('this.props',this.props)
+        // console.log('kankanusername，看',username)
+        if( username.username == undefined){
+            history.push('/login')
+        }else{
+           return true;
+        }
+        
+    }
     state = {
-
+        update:''
     }
     render() {
-        console.log(this.props)
-        let { match, history } = this.props
+        console.log(this.props.username.username)
+        let { match, history} = this.props
+        let {username} = this.props.username
+        // console.log(username)
         return (
             <div id="commit">
                 <header className="write-comment-header">
@@ -55,10 +77,10 @@ class Commit extends Component {
                     <p><em>0</em>/300字</p>
                     <input type="button" value="发送" className="send" onClick={async () => {
                         let res = await axios.post('http://49.232.154.155:2003/discover/commitcreate', {
-                            UserName: 'haowei',
+                            UserName: username,
                             Desc: $('.write-comment-container textarea')[0].value,
                             CreatedOn: new Date().format("yyyy-MM-dd hh:mm:ss"),
-                            NickName: 'haowei',
+                            NickName: username,
                             ID: match.params.id
                         })
                         history.go(-1)
