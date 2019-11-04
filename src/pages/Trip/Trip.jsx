@@ -209,7 +209,7 @@ class Trip extends Component {
                             <img src='https://upload.qulv.com/release//2019/01/22/13/55/ip04l0rh.ugc.jpeg'></img>
                             <img src='https://upload.qulv.com/release//2019/01/22/13/55/vlcxzzs4.hhl.jpg'></img>
                         </Carousel>
-                        <div className='code'>编号：{ProductCode}</div>
+                        <div className='code'>编号：{ProductCode.length>7?ProductCode:'L0000'+ProductCode}</div>
                         {/* <div className='sideNum'>
                             <span id='pageNum'>1</span>
                             <span>/5</span>
@@ -228,8 +228,8 @@ class Trip extends Component {
                         <p>实时询价</p>
                         <p>
                             <span className='showPriceTip'>
-                                '价格说明'
-                                <i className='icon icon-priceTip2'></i>
+                                价格说明
+                                <i className='icon icon-priceTip2' style={{verticalAlign:'top'}}></i>
                             </span>
                         </p>
                     </div>
