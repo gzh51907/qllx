@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-10-16 10:07:01
- * @LastEditTime: 2019-10-17 21:49:10
+ * @LastEditTime: 2019-11-04 15:54:46
  * @LastEditors: Please set LastEditors
  -->
 <template>
@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import { Messagebox,Form,FormItem,Button } from "element-ui";
 export default {
   data() {
     return {
@@ -102,7 +103,17 @@ export default {
       tableData: [
         //表格数据
       ],
-      currentPage: 1 //当前页
+      currentPage: 1, //当前页
+      name:'',
+      region:'',
+      type:'',
+      Data:{
+        ID:'',
+        CnName:'',
+        Name:'',
+        Desc:'',
+        ViewCount:''
+      }
     };
   },
   methods: {
@@ -129,7 +140,58 @@ export default {
         });
       }
     },
-    edit(row) {},
+    edit(row) {
+      let {Data} = row;
+      // console.log(Data)
+      this.Data.ID = Data.ID;
+      this.Data.CnName = Data.CnName;
+      this.Data.Name = Data.Name;
+      this.Data.Desc = Data.Desc;
+      this.Data.ViewCount = Data.ViewCount;
+      this.$confirm(
+        <div>
+        <el-form label-position='right' >
+        <el-form-item label='旅游目的地'>
+          <input v-model={this.Data.CnName}/>
+        </el-form-item>
+        <el-form-item label='标题'>
+          <input v-model={this.Data.Name}></input>
+        </el-form-item>
+        <el-form-item label='图片'>
+          <el-upload action='https://jsonplaceholder.typicode.com/posts/'>
+           <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label='目的地详情'>
+          <input v-model={this.Data.Desc}></input>
+        </el-form-item>
+        <el-form-item label='人气'>
+          <input v-model={this.Data.ViewCount}></input>
+        </el-form-item>
+        </el-form>
+        </div>,
+        "修改内容",
+        {
+          distinguishCancelAndClose: true,
+          confirmButtonText: "保存",
+          cancelButtonText: "放弃修改"
+        }
+      )
+        .then(() => {
+          this.$message({
+            type: "info",
+            message: "保存修改"
+          });
+          this.$axios.get('http://49.232.154.155:27017')
+        })
+        .catch(action => {
+          this.$message({
+            type: "info",
+            message:
+              action === "cancel" ? "放弃保存并离开页面" : "停留在当前页面"
+          });
+        });
+    },
     search($event) {
       // console.log($event)
       if ($event.keyCode == 13) {
@@ -150,7 +212,7 @@ export default {
   async created() {
     let api = "http://49.232.154.155:2003/discover/detailall";
     let { data } = await this.$axios.get(api);
-    console.log(data);
+    // console.log(data);
     data.forEach(item => {
       // item.products.forEach(item=>{
       //     this.tableData.push(item);
@@ -158,7 +220,7 @@ export default {
       // })
       this.tableData.push(item);
     });
-    console.log(this.tableData);
+    // console.log(this.tableData);
     // this.tableData.forEach(item=>{
     //   if(!Array.isArray(item.product_tags )&& item.product_tags != null){
 
