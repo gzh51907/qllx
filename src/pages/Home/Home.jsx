@@ -510,7 +510,7 @@ class Home extends Component {
                             <ul className='fn-clear pd-list'>
                                 {recommendList.map(item => {
                                     return (
-                                        <li>
+                                        <li key={item.id} onClick={this.toTrip.bind(this,item.id)}>
                                             <a>
                                                 <div className='img-box' data-id={item.id}>
                                                     <img lazy='y' src={item.imgUrl}></img>
